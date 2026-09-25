@@ -1,103 +1,124 @@
-# AgriCareAI - Empowering Farmers with Intelligent Agricultural Solutions
+# AgriCareAI - Intelligent Agricultural Mobile Assistant
 
-**AgriCareAI** is a mobile application developed in **Java** using **Android Studio**, designed to assist farmers in improving their crops and agricultural practices. The app integrates several advanced services that combine weather forecasting, plant disease detection, interactive chatbot functionality, and offline resources. Here's a comprehensive overview of the project's key features:
-
-
----
-
-## Features and Implementation
-
-### 1. **Weather Dashboard Forecasting**
-AgriCareAI provides a real-time weather dashboard tailored for farmers in Tunisia. 
-![pro_img (1)](https://github.com/user-attachments/assets/caaf2a3a-97a6-4393-8dac-b64727ac4266)
-
-
-
-- **Data Extraction**: 
-  - Weather data for various Tunisian cities was scraped from **AccuWeather** using **Selenium**.
-- **ETL Pipeline**:
-  - An **ETL pipeline** was built in **Python** to automate data processing.
-  - The pipeline stores data in an **Azure SQL Database** for persistence.
-  - Orchestration was implemented using **Apache Airflow** for scheduled tasks and workflow management.
-- **Dashboard Design**:
-  - A visually appealing and interactive weather dashboard was created in **Power BI**.
-  - The dashboard was published on **Power BI Cloud** for easy accessibility.
-- **Integration in App**:
-  - The dashboard is seamlessly integrated into AgriCareAI through a **WebView** component in **Android Studio**.
+**AgriCareAI** is an advanced native Android application built in **Java** designed to empower farmers with real-time weather advisories, AI-powered disease & pest detection, smart chatbot assistance, market prices (Mandi rates), satellite-assisted field mapping, offline agricultural tools, and multi-language support.
 
 ---
 
-### 2. **Plant Leaf Disease Detection**
+## 🌾 Features & Architecture Overview
 
-<img src="https://github.com/user-attachments/assets/2738c698-19fd-47f5-bbc7-995d2bfa55ed" width="200" />
-
-This feature enables farmers to identify and diagnose plant leaf diseases through image analysis.
-
-- **Model Development**:
-  - Pretrained object detection models were fine-tuned on a custom dataset from **Roboflow** to detect diseased zones and classify the diseases.
-  - Models evaluated: **YOLOv7**, **YOLOv8**, and **DETR**.
-  - The model with the best accuracy metrics was selected.
-- **Deployment**:
-  - The trained model was converted to **TensorFlow Lite (TFLite)** for mobile compatibility.
-  - Integrated into the Android app to allow real-time disease detection through the device's camera.
-
----
-
-### 3. **Agricultural Chatbot**
-AgriCareAI includes a powerful chatbot to answer farmers' questions and provide tailored agricultural advice.
-![image](https://github.com/user-attachments/assets/aa2b4e34-dab5-4ab6-99d1-bf4b18729aa6)
-
-- **Model Selection**:
-  - **MetaLLaMA 3 8B Instruct**, a large language model (LLM) from **Hugging Face**, was chosen for its performance and contextual accuracy.
-- **Interactive Features**:
-  - **Voice-to-Text**: Converts voice inputs into text for interaction.
-  - **Text-to-Speech**: Vocalizes chatbot responses for ease of understanding.
-- **API Integration**:
-  - Implemented through API requests for dynamic and efficient communication between the app and the LLM.
+| Feature / Module | Description & Capabilities |
+|---|---|
+| **Home Dashboard** | Personalized greeting, local district weather, time-critical daily advisories (spray window, irrigation, heat stress), smart daily tip generator, and feature shortcuts |
+| **Scan & AI Diagnosis** | **Offline TFLite Scanner** (real-time camera detection for tomato leaf diseases) + **AI Photo Check** (multimodal vision AI for any crop: diseases, pests, weeds, nutrient deficiencies) |
+| **AgriBot AI Assistant** | Multi-turn conversational AI powered by NVIDIA NIM (`meta/llama-3.2-11b-vision-instruct`), providing context-aware answers in the user's preferred language |
+| **Weather & Forecast** | 7-day forecast with soil temperature/moisture, spray windows, irrigation recommendations, and embedded interactive Power BI weather dashboard |
+| **Mandi Market Prices** | Daily Agmarknet commodity prices auto-filtered to the farmer's district first, with option to expand statewide |
+| **Field Mapping & GIS** | Esri World Imagery basemap, Nominatim village search, tap-to-detect parcel boundaries via Overpass API (OSM), area calculation (acres/ha/guntha), and NASA GIBS VIIRS vegetation index |
+| **My Fields & Scouting** | Saved plot boundaries, crop details, scouting notes, and AI crop recommendations |
+| **Offline Encyclopedia** | Offline reference guide for crop diseases with symptoms, causes, preventive measures, and solution detail sheets |
+| **Crop Calendar** | Sowing and harvest schedules for 16 major crops, prioritized by current season |
+| **Calculators** | Fertilizer dose optimizer (Urea/DAP/MOP), seed rate calculator, and spray mix estimator |
+| **Government Schemes** | Information and official links for PM-KISAN, PMFBY, KCC, Soil Health Card, and state agricultural initiatives |
 
 ---
 
-### 4. **Offline Encyclopedia**
-This feature ensures users can access critical information about detected diseases even without an internet connection.
+## 🎨 Visual Themes
 
-- **Content Design**:
-  - Brief and concise disease information (e.g., name, definition, symptoms, causes, and solutions).
-- **Data Storage**:
-  - All data is stored in a **JSON file** for quick access and offline functionality.
+AgriCareAI features two user-switchable visual themes that persist across sessions:
+- **Green (Default)**: Material 3 design system with light and dark mode support, using system bar insets.
+- **Soft (Neumorphic)**: 3D embossed and inset UI surfaces rendered using `theme/NeumorphDrawable` with dual blurred shadow layers and tree-walking background replacement via `theme/SoftTheme`.
 
 ---
 
-## Security and User Authentication
-AgriCareAI prioritizes user security with robust authentication mechanisms:
-- **Login and Signup**:
-  - Users must register and authenticate using their credentials.
-- **Data Storage**:
-  - User data is securely stored in a **local SQLite database** within the app.
+## 🌐 Multi-Language Support
+
+Supports 5 languages switchable at runtime from the toolbar or navigation drawer:
+- **English**
+- **Hindi (हिन्दी)**
+- **Kannada (<ctrl42><ctrl42>कन्नड / ಕನ್ನಡ)**
+- **Marathi (मराठी)**
+- **Urdu (اردو)** — Integrated with **Noto Nastaliq Urdu** font via runtime theme overlays (`LocaleManager.applyFont()`), ensuring proper RTL rendering while preserving theme colors.
+
+AgriBot and AI Photo Diagnosis respond directly in the user's active language.
 
 ---
 
-## Key Technologies and Tools
-- **Programming Languages**: Java (Android Studio), Python
-- **Deep Learning Models**: YOLOv7, YOLOv8, DETR
-- **Libraries and Tools**: TensorFlow Lite, Selenium, Power BI, Apache Airflow
-- **Databases**: Azure SQL Database, SQLite
-- **APIs**: Hugging Face, TensorFlow Lite Interpreter
+## 🔐 Security & Authentication
+
+- **Password Hashing**: Passwords stored using salted **PBKDF2-HMAC-SHA1** (20,000 iterations). Legacy accounts automatically migrate upon login.
+- **Session Tokens**: Authenticated users hold an **HS256 JWT** stored in `EncryptedSharedPreferences` with 7-day validity.
+- **Local Persistence**: User profile, district preferences, mapped fields, and offline notes are securely managed via a local SQLite database.
 
 ---
 
-## How to Run the App
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/MISSAOUI-MOHAMED-AMINE/AgriCareAi.git
-   ```
-2. Open the project in **Android Studio**.
-3. Install the required dependencies and SDKs.
-4. Run the app on an emulator or Android device.
+## 📍 Region & Location Setup
+
+Region and city selections are dynamically populated from `assets/cities.csv`:
+- **Tunisia** (24 Governorates)
+- **Karnataka, India** (33 Districts/Cities)
+- **Maharashtra, India** (36 Districts/Cities)
+
+Additional regions and cities can be configured directly in `cities.csv` without modifying application source code.
 
 ---
 
-AgriCareAI bridges advanced technologies with practical farming needs, making it a valuable tool for modern agriculture. Contributions and suggestions are welcome!
+## 🔑 API Key Configuration
 
+Keys are stored in `local.properties` (gitignored) and supplied to the build as `BuildConfig` parameters:
 
-https://github.com/user-attachments/assets/55b272ad-2816-4935-a019-c03edcb44843
+```properties
+NVIDIA_API_KEY=nvapi-...      # Powers AgriBot chatbot & AI Photo Check
+DATA_GOV_API_KEY=your_key     # Powers live Mandi commodity rates
+```
+*Note: Without API keys, the app functions smoothly; AI and Mandi screens will display configuration guidance while all offline tools and weather features remain fully active.*
 
+---
+
+## 🚀 Quick Start Guide
+
+### Prerequisites
+- **JDK 17–21** (Required by AGP 8.13 / Gradle 8.13)
+- **Android SDK Platform 36** (`compileSdk` / `targetSdk` = 36)
+- **Android Emulator / Device** (API 34+)
+
+### Automated Setup & Run
+Execute the automated run script inside `Mobile App/AgriCareA`:
+
+```bash
+cd "Mobile App/AgriCareA"
+./run.sh
+```
+What `./run.sh` does automatically:
+1. Detects Android Studio JDK 17-21 / system `JAVA_HOME`.
+2. Generates `local.properties` pointing to your local Android SDK.
+3. Boots an emulator if no active device is connected.
+4. Compiles the app (`./gradlew assembleDebug`).
+5. Installs and launches `com.mvx.agriculture`.
+
+### Command Line Options
+```bash
+./run.sh --device        # Run on an attached physical device or emulator
+./run.sh --serial <id>   # Target a specific device serial ID
+./run.sh --avd <name>    # Boot a specific Android Virtual Device
+./run.sh --clean         # Perform a clean build prior to running
+```
+
+---
+
+## 🧪 Running Tests
+
+```bash
+cd "Mobile App/AgriCareA"
+./gradlew test                  # JVM Unit Tests (models, filters, session JWTs)
+./gradlew connectedAndroidTest  # Instrumented UI & session tests (requires connected device/emulator)
+```
+
+---
+
+## 🛠️ Technical Stack
+
+- **Framework**: Native Android (Java 17, AGP 8.13.2, Gradle 8.13, Android SDK 36, Min SDK 24)
+- **ML / AI**: TensorFlow Lite Interpreter, CameraX, NVIDIA NIM (`meta/llama-3.2-11b-vision-instruct`)
+- **GIS & Mapping**: Esri World Imagery, Nominatim, Overpass API, NASA GIBS VIIRS
+- **Security**: AndroidX Security Crypto (`EncryptedSharedPreferences`), PBKDF2, JWT (HS256)
+- **UI Architecture**: Material Design 3, AndroidX Navigation, Custom Neumorphic Drawables
