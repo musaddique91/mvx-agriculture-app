@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.mvx.agriculture.MainShellActivity;
 import com.mvx.agriculture.R;
+import com.mvx.agriculture.voice.ScreenReader;
+import com.mvx.agriculture.voice.Speaker;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -151,6 +153,18 @@ public class EncyclopediaFragment extends Fragment {
         ((TextView) view.findViewById(R.id.tvSymptoms)).setText(disease.optString("symptoms"));
         ((TextView) view.findViewById(R.id.tvCauses)).setText(disease.optString("causes"));
         ((TextView) view.findViewById(R.id.tvSolutions)).setText(disease.optString("solutions"));
+
+        MaterialButton listen = view.findViewById(R.id.btnListen);
+        Speaker speaker = Speaker.get(requireContext());
+        Speaker.Listener icon = speaking -> listen.setIconResource(
+                speaking ? R.drawable.ic_stop : R.drawable.ic_volume_up);
+        speaker.addListener(icon);
+        listen.setOnClickListener(v -> speaker.toggle(requireContext(), ScreenReader.read(null,
+                view.findViewById(R.id.tvName), view.findViewById(R.id.detailsBody))));
+        sheet.setOnDismissListener(d -> {
+            speaker.removeListener(icon);
+            speaker.stop();
+        });
 
         ((MaterialButton) view.findViewById(R.id.btnClose)).setOnClickListener(v -> sheet.dismiss());
         ((MaterialButton) view.findViewById(R.id.btnAskBot)).setOnClickListener(v -> {

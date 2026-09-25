@@ -26,6 +26,7 @@
     <item android:title="@string/drawer_group_account">
         <menu>
             <item android:id="@+id/drawer_language" android:icon="@drawable/ic_translate" android:title="@string/action_language" />
+            <item android:id="@+id/drawer_voice"    android:icon="@drawable/ic_record_voice" android:title="@string/voice_settings_title" />
             <item android:id="@+id/drawer_theme"    android:icon="@drawable/ic_palette"   android:title="@string/action_theme" />
             <item android:id="@+id/drawer_profile"  android:icon="@drawable/ic_person"    android:title="@string/action_edit_profile" />
             <item android:id="@+id/drawer_about"    android:icon="@drawable/ic_info"      android:title="@string/title_about" />

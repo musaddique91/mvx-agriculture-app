@@ -25,6 +25,8 @@ import com.mvx.agriculture.R;
 import com.mvx.agriculture.chat.ChatAdapter;
 import com.mvx.agriculture.chat.ChatMessage;
 import com.mvx.agriculture.chat.NvidiaChatClient;
+import com.mvx.agriculture.voice.Speaker;
+import com.mvx.agriculture.voice.VoicePrefs;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
@@ -131,6 +133,9 @@ public class ChatFragment extends Fragment {
                         setAwaitingReply(false);
                         adapter.add(new ChatMessage(ChatMessage.Role.ASSISTANT, reply));
                         scrollToEnd();
+                        if (VoicePrefs.autoReadReplies(requireContext())) {
+                            Speaker.get(requireContext()).speak(requireContext(), reply);
+                        }
                     }
 
                     @Override
@@ -184,7 +189,9 @@ public class ChatFragment extends Fragment {
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         // Dictate in the app's language, not always English.
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
-                LocaleManager.currentTag(requireContext()));
+                LocaleManager.speechTag(requireContext()));
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.voice_speak_now));
+        Speaker.get(requireContext()).stop();
         try {
             speechLauncher.launch(intent);
         } catch (ActivityNotFoundException e) {

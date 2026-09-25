@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mvx.agriculture.R;
+import com.mvx.agriculture.voice.Speaker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,16 +82,23 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.BubbleHolder> 
     @Override
     public void onBindViewHolder(@NonNull BubbleHolder holder, int position) {
         if (position < messages.size() && holder.text != null) {
-            holder.text.setText(messages.get(position).text());
+            String text = messages.get(position).text();
+            holder.text.setText(text);
+            if (holder.listen != null) {
+                holder.listen.setOnClickListener(v -> Speaker.get(v.getContext()).toggle(v.getContext(), text));
+            }
         }
     }
 
     static class BubbleHolder extends RecyclerView.ViewHolder {
         final TextView text;
+        /** Only AgriBot's bubbles carry a speaker. */
+        final View listen;
 
         BubbleHolder(@NonNull View itemView) {
             super(itemView);
             text = itemView.findViewById(R.id.messageText);
+            listen = itemView.findViewById(R.id.messageListen);
         }
     }
 }

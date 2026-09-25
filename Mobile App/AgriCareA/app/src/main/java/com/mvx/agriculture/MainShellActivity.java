@@ -32,6 +32,10 @@ import com.mvx.agriculture.ui.ProfileFragment;
 import com.mvx.agriculture.ui.ScanFragment;
 import com.mvx.agriculture.ui.SchemesFragment;
 import com.mvx.agriculture.ui.WeatherFragment;
+import com.mvx.agriculture.voice.ScreenReader;
+import com.mvx.agriculture.voice.Speaker;
+import com.mvx.agriculture.voice.VoiceInput;
+import com.mvx.agriculture.voice.VoicePrefs;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -41,7 +45,7 @@ import com.google.android.material.navigation.NavigationView;
  * The single signed-in screen: a drawer for the full menu, bottom tabs for the five
  * things farmers open most, and one fragment container for everything else.
  */
-public class MainShellActivity extends AppCompatActivity {
+public class MainShellActivity extends AppCompatActivity implements VoiceInput.Host {
 
     /** Home asks the shell to switch tabs when a tile is tapped. */
     public interface Navigator {
@@ -57,6 +61,8 @@ public class MainShellActivity extends AppCompatActivity {
     private DatabaseHelper db;
     private String username;
     private int destination = R.id.nav_home;
+    private VoiceInput voiceInput;
+    private final Speaker.Listener speakingIcon = this::showSpeaking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,8 @@ public class MainShellActivity extends AppCompatActivity {
         LocaleManager.applyFont(this);
         setContentView(R.layout.activity_shell);
         SoftTheme.applyIfActive(findViewById(android.R.id.content));
+        // Result launchers must be registered before the activity starts.
+        voiceInput = new VoiceInput(this);
 
         session = new SessionManager(this);
         db = new DatabaseHelper(this);
@@ -85,6 +93,14 @@ public class MainShellActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> drawer.openDrawer(GravityCompat.START));
         toolbar.setOnMenuItemClickListener(item -> {
             int id = item.getItemId();
+            if (id == R.id.action_listen) {
+                readScreenAloud();
+                return true;
+            }
+            if (id == R.id.action_voice) {
+                showVoiceSettings();
+                return true;
+            }
             if (id == R.id.action_language) {
                 showLanguagePicker();
                 return true;
@@ -108,6 +124,8 @@ public class MainShellActivity extends AppCompatActivity {
         });
 
         fillDrawerHeader(navigationView);
+        Speaker.get(this).addListener(speakingIcon);
+        showSpeaking(Speaker.get(this).isSpeaking());
 
         // Fragment views are created after the activity's, so catch each one.
         getSupportFragmentManager().registerFragmentLifecycleCallbacks(
@@ -118,6 +136,9 @@ public class MainShellActivity extends AppCompatActivity {
                             @NonNull androidx.fragment.app.Fragment f,
                             @NonNull View v, android.os.Bundle state) {
                         SoftTheme.applyIfActive(v);
+                        voiceInput.attach(v);
+                        // A new screen: whatever was being read belonged to the old one.
+                        Speaker.get(MainShellActivity.this).stop();
                     }
                 }, true);
 
@@ -129,6 +150,90 @@ public class MainShellActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             openFromNotification(getIntent());
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (!isChangingConfigurations()) {
+            Speaker.get(this).stop();   // don't keep talking from a pocket
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        Speaker.get(this).removeListener(speakingIcon);
+        super.onDestroy();
+    }
+
+    @Override
+    public VoiceInput voiceInput() {
+        return voiceInput;
+    }
+
+    /** Reads out the title and everything on the current screen; a second tap stops. */
+    private void readScreenAloud() {
+        Speaker speaker = Speaker.get(this);
+        if (speaker.isSpeaking()) {
+            speaker.stop();
+            return;
+        }
+        String script = ScreenReader.read(toolbar.getTitle(), findViewById(R.id.fragmentContainer));
+        speaker.speak(this, script);
+    }
+
+    /** The toolbar's speaker turns into a stop button while the app is talking. */
+    private void showSpeaking(boolean speaking) {
+        if (toolbar == null) {
+            return;
+        }
+        android.view.MenuItem listen = toolbar.getMenu().findItem(R.id.action_listen);
+        if (listen != null) {
+            listen.setIcon(speaking ? R.drawable.ic_stop : R.drawable.ic_volume_up);
+            listen.setTitle(speaking ? R.string.voice_stop : R.string.voice_listen);
+        }
+    }
+
+    private void showVoiceSettings() {
+        View view = getLayoutInflater().inflate(R.layout.dialog_voice_settings, null);
+        com.google.android.material.button.MaterialButtonToggleGroup speed =
+                view.findViewById(R.id.voiceSpeed);
+        int[] speedIds = {R.id.voiceSpeedSlow, R.id.voiceSpeedNormal, R.id.voiceSpeedFast};
+        speed.check(speedIds[VoicePrefs.rateIndex(this)]);
+        speed.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (!isChecked) {
+                return;
+            }
+            for (int i = 0; i < speedIds.length; i++) {
+                if (speedIds[i] == checkedId) {
+                    VoicePrefs.setRateIndex(this, i);
+                }
+            }
+        });
+
+        com.google.android.material.materialswitch.MaterialSwitch autoRead =
+                view.findViewById(R.id.voiceAutoRead);
+        autoRead.setChecked(VoicePrefs.autoReadReplies(this));
+        autoRead.setOnCheckedChangeListener((b, on) -> VoicePrefs.setAutoReadReplies(this, on));
+
+        view.findViewById(R.id.voiceTest).setOnClickListener(v ->
+                Speaker.get(this).speak(this, getString(R.string.voice_test_sentence)));
+        view.findViewById(R.id.voiceInstall).setOnClickListener(v -> {
+            try {
+                startActivity(new android.content.Intent(
+                        android.speech.tts.TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA));
+            } catch (android.content.ActivityNotFoundException e) {
+                android.widget.Toast.makeText(this, R.string.voice_no_engine,
+                        android.widget.Toast.LENGTH_LONG).show();
+            }
+        });
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.voice_settings_title)
+                .setView(view)
+                .setPositiveButton(R.string.action_done, null)
+                .setOnDismissListener(d -> Speaker.get(this).stop())
+                .show();
     }
 
     @Override
@@ -179,6 +284,8 @@ public class MainShellActivity extends AppCompatActivity {
             showLanguagePicker();
         } else if (id == R.id.drawer_theme) {
             showThemePicker();
+        } else if (id == R.id.drawer_voice) {
+            showVoiceSettings();
         } else if (id == R.id.drawer_about) {
             startActivity(new android.content.Intent(this, Infos.class));
         } else {

@@ -80,6 +80,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLayout"
+            android:tag="no_voice"
             style="@style/Widget.AgriCare.TextField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

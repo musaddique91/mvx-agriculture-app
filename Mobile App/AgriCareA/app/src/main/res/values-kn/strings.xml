@@ -436,4 +436,25 @@
     <string name="money_open">ಕೃಷಿ ಲೆಕ್ಕಪತ್ರ ತೆರೆಯಿರಿ</string>
     <string name="money_sold">%1$s ಮಾರಾಟವಾಗಿದೆ</string>
     <string name="money_with_pending">ಬಾಕಿ ಹಣ ಬಂದ ನಂತರ %1$s</string>
+
+    <!-- Voice help: listen to screens, speak into boxes -->
+    <string name="action_done">ಆಯಿತು</string>
+    <string name="voice_listen">ಕೇಳಿ</string>
+    <string name="voice_stop">ನಿಲ್ಲಿಸಿ</string>
+    <string name="voice_settings_title">ಧ್ವನಿ ಸಹಾಯ</string>
+    <string name="voice_speed">ಮಾತನಾಡುವ ವೇಗ</string>
+    <string name="voice_speed_slow">ನಿಧಾನ</string>
+    <string name="voice_speed_normal">ಸಾಮಾನ್ಯ</string>
+    <string name="voice_speed_fast">ವೇಗ</string>
+    <string name="voice_auto_read">ಅಗ್ರಿಬಾಟ್ ಉತ್ತರಗಳು ಮತ್ತು ಸ್ಕ್ಯಾನ್ ಫಲಿತಾಂಶಗಳನ್ನು ಗಟ್ಟಿಯಾಗಿ ಓದಿ</string>
+    <string name="voice_test">ಧ್ವನಿ ಪರೀಕ್ಷಿಸಿ</string>
+    <string name="voice_test_sentence">ನಮಸ್ಕಾರ! ನಾನು ನಿಮಗೆ ಆ್ಯಪ್ ಅನ್ನು ಓದಿ ಹೇಳುತ್ತೇನೆ. ಕೇಳಲು ಯಾವುದೇ ಪರದೆಯ ಮೇಲಿರುವ ಸ್ಪೀಕರ್ ಬಟನ್ ಒತ್ತಿ.</string>
+    <string name="voice_install">ನನ್ನ ಭಾಷೆಯ ಧ್ವನಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="voice_settings_help">ಯಾವುದೇ ಪರದೆಯನ್ನು ಕೇಳಲು ಮೇಲಿರುವ ಸ್ಪೀಕರ್ ಒತ್ತಿ. ಟೈಪ್ ಮಾಡುವ ಬದಲು ಮಾತನಾಡಲು ಯಾವುದೇ ಬಾಕ್ಸ್‌ನ ಮೈಕ್ ಒತ್ತಿ.</string>
+    <string name="voice_missing_title">ಧ್ವನಿ ಸ್ಥಾಪಿಸಿಲ್ಲ</string>
+    <string name="voice_missing_message">ಈ ಫೋನ್‌ನಲ್ಲಿ ಇನ್ನೂ %1$s ಧ್ವನಿ ಇಲ್ಲ. ಒಮ್ಮೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದರೆ, ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದೆಯೂ ಆ್ಯಪ್ ಮಾತನಾಡುತ್ತದೆ.</string>
+    <string name="voice_no_engine">ಈ ಫೋನ್ ಪಠ್ಯವನ್ನು ಓದಿ ಹೇಳಲು ಸಾಧ್ಯವಿಲ್ಲ. Play Store ನಿಂದ Google Speech Services ಸ್ಥಾಪಿಸಿ.</string>
+    <string name="voice_type_hint">ಈ ಬಾಕ್ಸ್ ತುಂಬಲು ಮಾತನಾಡಿ</string>
+    <string name="voice_speak_now">ಈಗ ಮಾತನಾಡಿ</string>
+    <string name="voice_no_number">ಸಂಖ್ಯೆ ಕೇಳಿಸಲಿಲ್ಲ. ಮೈಕ್ ಒತ್ತಿ ಮತ್ತೆ ಹೇಳಿ.</string>
 </resources>
