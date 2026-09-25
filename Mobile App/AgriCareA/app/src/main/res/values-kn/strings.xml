@@ -452,9 +452,10 @@
     <string name="voice_install">ನನ್ನ ಭಾಷೆಯ ಧ್ವನಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ</string>
     <string name="voice_settings_help">ಯಾವುದೇ ಪರದೆಯನ್ನು ಕೇಳಲು ಮೇಲಿರುವ ಸ್ಪೀಕರ್ ಒತ್ತಿ. ಟೈಪ್ ಮಾಡುವ ಬದಲು ಮಾತನಾಡಲು ಯಾವುದೇ ಬಾಕ್ಸ್‌ನ ಮೈಕ್ ಒತ್ತಿ.</string>
     <string name="voice_missing_title">ಧ್ವನಿ ಸ್ಥಾಪಿಸಿಲ್ಲ</string>
-    <string name="voice_missing_message">ಈ ಫೋನ್‌ನಲ್ಲಿ ಇನ್ನೂ %1$s ಧ್ವನಿ ಇಲ್ಲ. ಒಮ್ಮೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದರೆ, ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದೆಯೂ ಆ್ಯಪ್ ಮಾತನಾಡುತ್ತದೆ.</string>
+    <string name="voice_missing_message">ಈ ಫೋನ್‌ನಲ್ಲಿ ಇನ್ನೂ %1$s ಧ್ವನಿ ಇಲ್ಲ. Google Speech Services ನಲ್ಲಿ ಒಮ್ಮೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದರೆ, ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದೆಯೂ ಆ್ಯಪ್ ಮಾತನಾಡುತ್ತದೆ.</string>
     <string name="voice_no_engine">ಈ ಫೋನ್ ಪಠ್ಯವನ್ನು ಓದಿ ಹೇಳಲು ಸಾಧ್ಯವಿಲ್ಲ. Play Store ನಿಂದ Google Speech Services ಸ್ಥಾಪಿಸಿ.</string>
     <string name="voice_type_hint">ಈ ಬಾಕ್ಸ್ ತುಂಬಲು ಮಾತನಾಡಿ</string>
     <string name="voice_speak_now">ಈಗ ಮಾತನಾಡಿ</string>
     <string name="voice_no_number">ಸಂಖ್ಯೆ ಕೇಳಿಸಲಿಲ್ಲ. ಮೈಕ್ ಒತ್ತಿ ಮತ್ತೆ ಹೇಳಿ.</string>
+    <string name="voice_urdu_fallback">ಈ ಫೋನ್‌ನಲ್ಲಿ ಉರ್ದು ಧ್ವನಿ ಇಲ್ಲ, ಆದ್ದರಿಂದ ಉರ್ದುವನ್ನು ಹಿಂದಿ ಧ್ವನಿಯಲ್ಲಿ ಓದಲಾಗುತ್ತಿದೆ. ಸರಿಯಾದ ಉರ್ದು ಧ್ವನಿಗಾಗಿ Google Speech Services ಸ್ಥಾಪಿಸಿ ಮತ್ತು ಅದರ ಸೆಟ್ಟಿಂಗ್‌ನಲ್ಲಿ ಉರ್ದು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.</string>
 </resources>

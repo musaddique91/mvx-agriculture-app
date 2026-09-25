@@ -455,9 +455,10 @@
     <string name="voice_install">मेरी भाषा की आवाज़ डाउनलोड करें</string>
     <string name="voice_settings_help">किसी भी स्क्रीन को सुनने के लिए ऊपर स्पीकर दबाएँ। टाइप करने की जगह बोलने के लिए किसी भी बॉक्स में माइक दबाएँ।</string>
     <string name="voice_missing_title">आवाज़ इंस्टॉल नहीं है</string>
-    <string name="voice_missing_message">इस फ़ोन में अभी %1$s आवाज़ नहीं है। एक बार डाउनलोड करें, फिर ऐप बिना इंटरनेट के भी बोलकर सुनाएगा।</string>
+    <string name="voice_missing_message">इस फ़ोन में अभी %1$s आवाज़ नहीं है। Google Speech Services में एक बार डाउनलोड करें, फिर ऐप बिना इंटरनेट के भी बोलकर सुनाएगा।</string>
     <string name="voice_no_engine">यह फ़ोन पढ़कर नहीं सुना सकता। Play Store से Google Speech Services इंस्टॉल करें।</string>
     <string name="voice_type_hint">यह बॉक्स भरने के लिए बोलें</string>
     <string name="voice_speak_now">अब बोलिए</string>
     <string name="voice_no_number">कोई संख्या सुनाई नहीं दी। माइक दबाकर फिर से बोलें।</string>
+    <string name="voice_urdu_fallback">इस फ़ोन में उर्दू आवाज़ नहीं है, इसलिए उर्दू हिंदी आवाज़ में पढ़ी जा रही है। सही उर्दू आवाज़ के लिए Google Speech Services इंस्टॉल करें और उसकी सेटिंग में उर्दू डाउनलोड करें।</string>
 </resources>

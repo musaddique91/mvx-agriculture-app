@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.speech.tts.Voice;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -17,8 +18,11 @@ import com.mvx.agriculture.LocaleManager;
 import com.mvx.agriculture.R;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
@@ -27,6 +31,12 @@ import java.util.concurrent.CopyOnWriteArraySet;
  * One engine serves the whole app: starting a text-to-speech engine takes a moment
  * and holds a service connection, so screens share this instead of each owning one.
  * Text asked for before the engine is ready waits and is spoken once it is.
+ *
+ * Phones often ship a maker's engine as the default (Samsung's has no Urdu or
+ * Kannada) with Google's installed beside it, so when the default engine lacks the
+ * language every other installed engine is tried before giving up. Urdu has one
+ * more fallback: spoken Urdu and Hindi are close, so with no Urdu voice anywhere the
+ * text is rewritten in Devanagari and read by a Hindi voice.
  */
 public final class Speaker {
 
@@ -34,6 +44,8 @@ public final class Speaker {
     public interface Listener {
         void onSpeakingChanged(boolean speaking);
     }
+
+    private static final String GOOGLE_TTS = "com.google.android.tts";
 
     private static Speaker instance;
 
@@ -49,6 +61,15 @@ public final class Speaker {
     private String lastUtteranceId;
     private boolean speaking;
     private int generation;
+
+    /** Engine package in use; null means the phone's default. */
+    private String engine;
+    /** The app language the engines below were searched for. */
+    private String searchedFor;
+    private final Set<String> enginesTried = new HashSet<>();
+    /** Urdu with no Urdu voice anywhere: read it with a Hindi voice instead. */
+    private boolean hindiForUrdu;
+    private boolean toldAboutFallback;
 
     private Speaker(Context context) {
         app = context.getApplicationContext();
@@ -93,6 +114,7 @@ public final class Speaker {
                 tts.shutdown();
             }
             tts = null;
+            engine = null;
         }
         if (tts == null) {
             pending = clean;
@@ -124,6 +146,21 @@ public final class Speaker {
     }
 
     private void onInit(int status) {
+        if (status != TextToSpeech.SUCCESS && engine != null) {
+            // That engine wouldn't start; carry on down the list.
+            enginesTried.add(engine);
+            String text = pending;
+            pending = null;
+            main.post(() -> {
+                String nextEngine = nextEngine();
+                if (text != null && nextEngine != null) {
+                    switchEngine(nextEngine, text);
+                } else {
+                    failed = true;
+                }
+            });
+            return;
+        }
         if (status != TextToSpeech.SUCCESS) {
             failed = true;
             pending = null;
@@ -131,6 +168,9 @@ public final class Speaker {
             return;
         }
         ready = true;
+        if (engine == null) {
+            engine = tts.getDefaultEngine();
+        }
         tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
             @Override
             public void onStart(String utteranceId) {
@@ -149,9 +189,23 @@ public final class Speaker {
             @Override
             @SuppressWarnings("deprecation")
             public void onError(String utteranceId) {
+                onError(utteranceId, TextToSpeech.ERROR);
+            }
+
+            @Override
+            public void onError(String utteranceId, int errorCode) {
                 main.post(() -> {
-                    if (utteranceId.equals(lastUtteranceId)) {
-                        setSpeaking(false);
+                    if (!utteranceId.equals(lastUtteranceId)) {
+                        return;
+                    }
+                    setSpeaking(false);
+                    // A voice that needs the internet or isn't downloaded fails quietly
+                    // otherwise; say why, and offer the download that fixes it for good.
+                    if (errorCode == TextToSpeech.ERROR_NETWORK
+                            || errorCode == TextToSpeech.ERROR_NETWORK_TIMEOUT
+                            || errorCode == TextToSpeech.ERROR_NOT_INSTALLED_YET) {
+                        languageInForce = null;
+                        offerVoiceDownload();
                     }
                 });
             }
@@ -173,10 +227,41 @@ public final class Speaker {
     }
 
     private void say(String text) {
-        if (!applyLanguage()) {
-            offerVoiceDownload();
+        String tag = LocaleManager.currentTag(app);
+        if (!tag.equals(searchedFor)) {
+            // New language: every engine gets a fresh chance.
+            searchedFor = tag;
+            enginesTried.clear();
+            hindiForUrdu = false;
+            languageInForce = null;
+        }
+        String want = hindiForUrdu ? "hi" : tag;
+        if (applyLanguage(want)) {
+            if (hindiForUrdu && !toldAboutFallback) {
+                toldAboutFallback = true;
+                Toast.makeText(app, R.string.voice_urdu_fallback, Toast.LENGTH_LONG).show();
+            }
+            speakNow(hindiForUrdu && UrduScript.hasUrdu(text) ? UrduScript.toDevanagari(text) : text);
             return;
         }
+
+        // This engine can't do it; try the next one installed.
+        enginesTried.add(engine);
+        String nextEngine = nextEngine();
+        if (nextEngine != null) {
+            switchEngine(nextEngine, text);
+            return;
+        }
+        if ("ur".equals(tag) && !hindiForUrdu) {
+            hindiForUrdu = true;
+            enginesTried.clear();
+            say(text);
+            return;
+        }
+        offerVoiceDownload();
+    }
+
+    private void speakNow(String text) {
         tts.setSpeechRate(VoicePrefs.rate(app));
         tts.stop();
         generation++;
@@ -191,22 +276,114 @@ public final class Speaker {
         setSpeaking(true);
     }
 
-    /** Picks a voice for the app's language. False when the phone has none. */
-    private boolean applyLanguage() {
-        String tag = LocaleManager.currentTag(app);
+    /** Installed engines not yet tried for this language, Google's first. */
+    private String nextEngine() {
+        if (tts == null) {
+            return null;
+        }
+        List<String> order = new ArrayList<>();
+        for (TextToSpeech.EngineInfo info : tts.getEngines()) {
+            if (GOOGLE_TTS.equals(info.name)) {
+                order.add(0, info.name);
+            } else {
+                order.add(info.name);
+            }
+        }
+        for (String name : order) {
+            if (!enginesTried.contains(name)) {
+                return name;
+            }
+        }
+        return null;
+    }
+
+    private void switchEngine(String name, String text) {
+        if (tts != null) {
+            tts.shutdown();
+        }
+        ready = false;
+        languageInForce = null;
+        engine = name;
+        pending = text;
+        tts = new TextToSpeech(app, this::onInit, name);
+    }
+
+    /**
+     * Picks a voice for the language on the current engine. False when it has none
+     * that can speak now: missing entirely, or listed but never downloaded.
+     */
+    private boolean applyLanguage(String tag) {
         if (tag.equals(languageInForce)) {
             return true;
         }
         for (Locale candidate : candidates(tag)) {
-            int result = tts.isLanguageAvailable(candidate);
-            if (result >= TextToSpeech.LANG_AVAILABLE) {
-                tts.setLanguage(candidate);
+            if (tts.isLanguageAvailable(candidate) < TextToSpeech.LANG_AVAILABLE) {
+                continue;
+            }
+            Voice voice = bestVoice(candidate);
+            if (voice != null) {
+                if (tts.setVoice(voice) == TextToSpeech.SUCCESS) {
+                    languageInForce = tag;
+                    return true;
+                }
+            } else if (!hasVoiceList() && tts.setLanguage(candidate) >= TextToSpeech.LANG_AVAILABLE) {
+                // Older engines don't list voices; trust the language check.
                 languageInForce = tag;
                 return true;
             }
         }
         languageInForce = null;
         return false;
+    }
+
+    private boolean hasVoiceList() {
+        try {
+            Set<Voice> voices = tts.getVoices();
+            return voices != null && !voices.isEmpty();
+        } catch (RuntimeException e) {
+            return false;   // some engines throw here
+        }
+    }
+
+    /**
+     * The best installed voice for the locale's language: downloaded voices first
+     * (they work offline in the field), then network ones; the locale's own region
+     * before others.
+     */
+    private Voice bestVoice(Locale locale) {
+        Set<Voice> voices;
+        try {
+            voices = tts.getVoices();
+        } catch (RuntimeException e) {
+            return null;
+        }
+        if (voices == null) {
+            return null;
+        }
+        Voice best = null;
+        int bestScore = Integer.MIN_VALUE;
+        for (Voice voice : voices) {
+            Locale vl = voice.getLocale();
+            if (vl == null || !locale.getLanguage().equals(vl.getLanguage())) {
+                continue;
+            }
+            Set<String> features = voice.getFeatures();
+            if (features != null && features.contains(TextToSpeech.Engine.KEY_FEATURE_NOT_INSTALLED)) {
+                continue;   // listed, but speaking would fail until it is downloaded
+            }
+            int score = voice.getQuality();
+            if (!voice.isNetworkConnectionRequired()) {
+                score += 1000;
+            }
+            if (locale.getCountry().equals(vl.getCountry())) {
+                score += 100;
+            }
+            if (score > bestScore) {
+                bestScore = score;
+                best = voice;
+            }
+        }
+        return best;
     }
 
     private static Locale[] candidates(String tag) {
@@ -221,6 +398,11 @@ public final class Speaker {
         }
     }
 
+    /** Forget which engines failed, e.g. after the farmer has installed a voice. */
+    public void recheckVoices() {
+        searchedFor = null;
+    }
+
     private void offerVoiceDownload() {
         Activity activity = requester.get();
         if (activity == null || activity.isFinishing()) {
@@ -232,14 +414,42 @@ public final class Speaker {
                 .setMessage(activity.getString(R.string.voice_missing_message,
                         LocaleManager.nativeNames()[LocaleManager.currentIndex(activity)]))
                 .setNegativeButton(R.string.action_cancel, null)
-                .setPositiveButton(R.string.voice_install, (d, w) -> {
-                    try {
-                        activity.startActivity(new Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA));
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(activity, R.string.voice_no_engine, Toast.LENGTH_LONG).show();
-                    }
-                })
+                .setPositiveButton(R.string.voice_install, (d, w) -> openVoiceDownload(activity))
                 .show();
+    }
+
+    /**
+     * Opens the voice download screen of Google's engine — the one with Urdu, Kannada
+     * and Marathi — or its Play Store page if it isn't installed.
+     */
+    public void openVoiceDownload(Activity activity) {
+        recheckVoices();
+        boolean hasGoogle = false;
+        if (tts != null) {
+            for (TextToSpeech.EngineInfo info : tts.getEngines()) {
+                hasGoogle |= GOOGLE_TTS.equals(info.name);
+            }
+        }
+        try {
+            if (hasGoogle) {
+                activity.startActivity(new Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA)
+                        .setPackage(GOOGLE_TTS));
+                return;
+            }
+        } catch (ActivityNotFoundException ignored) {
+            // fall through to the store
+        }
+        try {
+            activity.startActivity(new Intent(Intent.ACTION_VIEW,
+                    android.net.Uri.parse("market://details?id=" + GOOGLE_TTS)));
+        } catch (ActivityNotFoundException e) {
+            try {
+                activity.startActivity(new Intent(Intent.ACTION_VIEW,
+                        android.net.Uri.parse("https://play.google.com/store/apps/details?id=" + GOOGLE_TTS)));
+            } catch (ActivityNotFoundException e2) {
+                Toast.makeText(activity, R.string.voice_no_engine, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private void setSpeaking(boolean now) {

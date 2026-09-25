@@ -153,6 +153,13 @@ public class MainShellActivity extends AppCompatActivity implements VoiceInput.H
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        // Back from downloading a voice, perhaps: look for engines afresh.
+        Speaker.get(this).recheckVoices();
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         if (!isChangingConfigurations()) {
@@ -218,15 +225,8 @@ public class MainShellActivity extends AppCompatActivity implements VoiceInput.H
 
         view.findViewById(R.id.voiceTest).setOnClickListener(v ->
                 Speaker.get(this).speak(this, getString(R.string.voice_test_sentence)));
-        view.findViewById(R.id.voiceInstall).setOnClickListener(v -> {
-            try {
-                startActivity(new android.content.Intent(
-                        android.speech.tts.TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA));
-            } catch (android.content.ActivityNotFoundException e) {
-                android.widget.Toast.makeText(this, R.string.voice_no_engine,
-                        android.widget.Toast.LENGTH_LONG).show();
-            }
-        });
+        view.findViewById(R.id.voiceInstall).setOnClickListener(v ->
+                Speaker.get(this).openVoiceDownload(this));
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.voice_settings_title)

@@ -51,6 +51,7 @@ Everything works by voice in the app's current language (hi-IN, kn-IN, mr-IN, ur
 - **Speak instead of typing**: every text box gets a mic icon, including the add-money, save-field, scouting-note and start-season dialogs, plus login and signup. For number boxes (amount, quantity, rate, days) the number is pulled out of what was said, and Devanagari, Kannada and Urdu digits are handled.
 - **AgriBot and scan results aloud**: AgriBot answers and AI photo diagnoses are read out automatically (you can turn this off), and every answer bubble has its own listen button. The disease encyclopedia sheet has one too.
 - **Voice help settings** (toolbar ⋮ or drawer): speaking speed (slow / normal / fast), auto-read on/off, a test sentence, and a shortcut to download the phone's voice for your language. If the phone has no voice for the language, the app offers to download one; once downloaded it works offline.
+- **Voice engine fallback**: if the phone's default engine (e.g. Samsung's) lacks the language, every other installed engine is tried, Google's first, preferring downloaded voices over network ones. For Urdu with no Urdu voice anywhere, the text is rewritten in Devanagari (`UrduScript`) and read by a Hindi voice, with a one-time hint on how to get a real Urdu voice.
 
 Code lives in `app/src/main/java/com/mvx/agriculture/voice/`: `Speaker` (one shared text-to-speech engine), `ScreenReader`, `VoiceInput` and `SpeechText` (text shaping, unit-tested in `SpeechTextTest`).
 

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public final class SpeechText {
 
     /** Sentence ends in the scripts the app speaks: Latin, Devanagari danda, Urdu. */
-    private static final Pattern SENTENCE_END = Pattern.compile("(?<=[.!?।۔؟\n])");
+    private static final Pattern SENTENCE_END = Pattern.compile("(?<=[.!?\u0964\u06D4\u061F\n])");
     private static final Pattern GROUPED = Pattern.compile("\\d{1,3}(?:,\\d{2,3})*,\\d{3}(?![\\d,])");
     private static final Pattern NUMBER = Pattern.compile("\\d+(?:[.,]\\d+)?");
 
@@ -91,14 +91,14 @@ public final class SpeechText {
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
             int value = -1;
-            if (c >= '०' && c <= '९') {        // Devanagari
-                value = c - '०';
-            } else if (c >= '೦' && c <= '೯') { // Kannada
-                value = c - '೦';
-            } else if (c >= '٠' && c <= '٩') { // Arabic-Indic
-                value = c - '٠';
-            } else if (c >= '۰' && c <= '۹') { // Extended Arabic-Indic (Urdu)
-                value = c - '۰';
+            if (c >= '\u0966' && c <= '\u096F') {        // Devanagari
+                value = c - '\u0966';
+            } else if (c >= '\u0CE6' && c <= '\u0CEF') { // Kannada
+                value = c - '\u0CE6';
+            } else if (c >= '\u0660' && c <= '\u0669') { // Arabic-Indic
+                value = c - '\u0660';
+            } else if (c >= '\u06F0' && c <= '\u06F9') { // Extended Arabic-Indic (Urdu)
+                value = c - '\u06F0';
             }
             out.append(value >= 0 ? (char) ('0' + value) : c);
         }

@@ -452,9 +452,10 @@
     <string name="voice_install">میری زبان کی آواز ڈاؤن لوڈ کریں</string>
     <string name="voice_settings_help">کسی بھی اسکرین کو سننے کے لیے اوپر اسپیکر دبائیں۔ ٹائپ کرنے کے بجائے بولنے کے لیے کسی بھی خانے میں مائیک دبائیں۔</string>
     <string name="voice_missing_title">آواز انسٹال نہیں ہے</string>
-    <string name="voice_missing_message">اس فون میں ابھی %1$s آواز نہیں ہے۔ ایک بار ڈاؤن لوڈ کریں، پھر ایپ انٹرنیٹ کے بغیر بھی بول کر سنائے گی۔</string>
+    <string name="voice_missing_message">اس فون میں ابھی %1$s آواز نہیں ہے۔ Google Speech Services میں ایک بار ڈاؤن لوڈ کریں، پھر ایپ انٹرنیٹ کے بغیر بھی بول کر سنائے گی۔</string>
     <string name="voice_no_engine">یہ فون پڑھ کر نہیں سنا سکتا۔ Play Store سے Google Speech Services انسٹال کریں۔</string>
     <string name="voice_type_hint">یہ خانہ بھرنے کے لیے بولیں</string>
     <string name="voice_speak_now">اب بولیے</string>
     <string name="voice_no_number">کوئی نمبر سنائی نہیں دیا۔ مائیک دبا کر دوبارہ بولیں۔</string>
+    <string name="voice_urdu_fallback">اس فون میں اردو آواز نہیں ہے، اس لیے اردو ہندی آواز میں پڑھی جا رہی ہے۔ صحیح اردو آواز کے لیے Google Speech Services انسٹال کریں اور اس کی سیٹنگ میں اردو ڈاؤن لوڈ کریں۔</string>
 </resources>

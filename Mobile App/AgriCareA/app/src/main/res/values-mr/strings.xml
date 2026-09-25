@@ -452,9 +452,10 @@
     <string name="voice_install">माझ्या भाषेचा आवाज डाउनलोड करा</string>
     <string name="voice_settings_help">कोणतीही स्क्रीन ऐकण्यासाठी वर स्पीकर दाबा. टाइप करण्याऐवजी बोलण्यासाठी कोणत्याही बॉक्समधील माइक दाबा.</string>
     <string name="voice_missing_title">आवाज इन्स्टॉल नाही</string>
-    <string name="voice_missing_message">या फोनमध्ये अजून %1$s आवाज नाही. एकदा डाउनलोड करा, मग अ‍ॅप इंटरनेटशिवायही बोलेल.</string>
+    <string name="voice_missing_message">या फोनमध्ये अजून %1$s आवाज नाही. Google Speech Services मध्ये एकदा डाउनलोड करा, मग अ‍ॅप इंटरनेटशिवायही बोलेल.</string>
     <string name="voice_no_engine">हा फोन मजकूर वाचून दाखवू शकत नाही. Play Store मधून Google Speech Services इन्स्टॉल करा.</string>
     <string name="voice_type_hint">हा बॉक्स भरण्यासाठी बोला</string>
     <string name="voice_speak_now">आता बोला</string>
     <string name="voice_no_number">संख्या ऐकू आली नाही. माइक दाबून पुन्हा बोला.</string>
+    <string name="voice_urdu_fallback">या फोनमध्ये उर्दू आवाज नाही, म्हणून उर्दू हिंदी आवाजात वाचली जात आहे. योग्य उर्दू आवाजासाठी Google Speech Services इन्स्टॉल करा आणि त्याच्या सेटिंगमध्ये उर्दू डाउनलोड करा.</string>
 </resources>

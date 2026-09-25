@@ -489,9 +489,10 @@
     <string name="voice_install">Download voice for my language</string>
     <string name="voice_settings_help">Tap the speaker at the top of any screen to hear it. Tap the mic in any box to speak instead of typing.</string>
     <string name="voice_missing_title">Voice not installed</string>
-    <string name="voice_missing_message">This phone has no %1$s voice yet. Download it once and the app can talk to you, even without internet.</string>
+    <string name="voice_missing_message">This phone has no %1$s voice yet. Download it once in Google Speech Services and the app can talk to you, even without internet.</string>
     <string name="voice_no_engine">This phone cannot read text aloud. Install Google Speech Services from the Play Store.</string>
     <string name="voice_type_hint">Speak to fill this box</string>
     <string name="voice_speak_now">Speak now</string>
     <string name="voice_no_number">Didn\'t catch a number. Tap the mic and say it again.</string>
+    <string name="voice_urdu_fallback">This phone has no Urdu voice, so Urdu is being read with a Hindi voice. For a proper Urdu voice, install Google Speech Services and download Urdu in its settings.</string>
 </resources>
