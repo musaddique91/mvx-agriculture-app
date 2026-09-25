@@ -16,7 +16,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class login extends AppCompatActivity {
+public class login extends AppCompatActivity implements com.mvx.agriculture.voice.VoiceInput.Host {
+
+    private com.mvx.agriculture.voice.VoiceInput voiceInput;
 
     private DatabaseHelper database;
     private SessionManager session;
@@ -31,6 +33,8 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         SoftTheme.applyIfActive(findViewById(android.R.id.content));
         InsetsSupport.applyTo(this);
+        voiceInput = new com.mvx.agriculture.voice.VoiceInput(this);
+        voiceInput.attach(findViewById(android.R.id.content));
 
         database = new DatabaseHelper(this);
         session = new SessionManager(this);
@@ -86,5 +90,10 @@ public class login extends AppCompatActivity {
 
     private static String text(TextInputEditText field) {
         return field.getText() == null ? "" : field.getText().toString().trim();
+    }
+
+    @Override
+    public com.mvx.agriculture.voice.VoiceInput voiceInput() {
+        return voiceInput;
     }
 }

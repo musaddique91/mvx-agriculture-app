@@ -38,6 +38,8 @@ import com.mvx.agriculture.OverlayView;
 import com.mvx.agriculture.R;
 import com.mvx.agriculture.chat.ScanMode;
 import com.mvx.agriculture.chat.VisionClient;
+import com.mvx.agriculture.voice.Speaker;
+import com.mvx.agriculture.voice.VoicePrefs;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -66,7 +68,8 @@ public class ScanFragment extends Fragment implements Detector.DetectorListener 
     private PreviewView viewFinder;
     private OverlayView overlay;
     private TextView inferenceTime, detectionChip, resultText;
-    private MaterialButton askButton, captureButton, askAboutResult;
+    private MaterialButton askButton, captureButton, askAboutResult, listenResult;
+    private final Speaker.Listener listenIcon = this::showListening;
     private View livePane, photoPane, resultCard;
     private ImageView photoPreview;
     private LinearProgressIndicator scanProgress;
@@ -120,6 +123,10 @@ public class ScanFragment extends Fragment implements Detector.DetectorListener 
         resultCard = view.findViewById(R.id.resultCard);
         resultText = view.findViewById(R.id.resultText);
         askAboutResult = view.findViewById(R.id.askAboutResult);
+        listenResult = view.findViewById(R.id.listenResult);
+        listenResult.setOnClickListener(v ->
+                Speaker.get(requireContext()).toggle(requireContext(), resultText.getText()));
+        Speaker.get(requireContext()).addListener(listenIcon);
         modeChips = view.findViewById(R.id.modeChips);
         scanContext = view.findViewById(R.id.scanContext);
 
@@ -306,6 +313,10 @@ public class ScanFragment extends Fragment implements Detector.DetectorListener 
                         lastDiagnosis = diagnosis;
                         resultText.setText(diagnosis);
                         resultCard.setVisibility(View.VISIBLE);
+                        // Say the diagnosis straight away: the farmer is looking at the plant, not the phone.
+                        if (VoicePrefs.autoReadReplies(requireContext())) {
+                            Speaker.get(requireContext()).speak(requireContext(), diagnosis);
+                        }
                     }
 
                     @Override
@@ -382,9 +393,17 @@ public class ScanFragment extends Fragment implements Detector.DetectorListener 
         });
     }
 
+    private void showListening(boolean speaking) {
+        if (listenResult != null) {
+            listenResult.setIconResource(speaking ? R.drawable.ic_stop : R.drawable.ic_volume_up);
+            listenResult.setText(speaking ? R.string.voice_stop : R.string.voice_listen);
+        }
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Speaker.get(requireContext()).removeListener(listenIcon);
         if (imageAnalyzer != null) {
             imageAnalyzer.clearAnalyzer();
         }

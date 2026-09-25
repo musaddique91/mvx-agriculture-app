@@ -68,6 +68,21 @@ public final class LocaleManager {
         return "English";
     }
 
+    /**
+     * The current language as a full locale for speech, e.g. hi-IN.
+     *
+     * Recognisers and voices are keyed by region, and a bare "hi" can land on no
+     * voice at all, so every language is pinned to India.
+     */
+    public static java.util.Locale speechLocale(Context context) {
+        return new java.util.Locale(currentTag(context), "IN");
+    }
+
+    /** BCP-47 tag for the speech recogniser, e.g. "kn-IN". */
+    public static String speechTag(Context context) {
+        return currentTag(context) + "-IN";
+    }
+
     public static int currentIndex(Context context) {
         String tag = currentTag(context);
         for (int i = 0; i < LANGUAGES.length; i++) {

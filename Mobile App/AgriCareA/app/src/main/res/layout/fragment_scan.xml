@@ -238,6 +238,15 @@
                             tools:text="Likely early blight…" />
 
                         <com.google.android.material.button.MaterialButton
+                            android:id="@+id/listenResult"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_m"
+                            android:text="@string/voice_listen"
+                            app:icon="@drawable/ic_volume_up" />
+
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/askAboutResult"
                             style="@style/Widget.Material3.Button.TonalButton"
                             android:layout_width="match_parent"

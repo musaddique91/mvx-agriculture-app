@@ -436,4 +436,25 @@
     <string name="money_open">کھیت کا حساب کھولیں</string>
     <string name="money_sold">%1$s بیچا گیا</string>
     <string name="money_with_pending">باقی ادائیگی ملنے پر %1$s</string>
+
+    <!-- Voice help: listen to screens, speak into boxes -->
+    <string name="action_done">ہو گیا</string>
+    <string name="voice_listen">سنیں</string>
+    <string name="voice_stop">روکیں</string>
+    <string name="voice_settings_title">آواز کی مدد</string>
+    <string name="voice_speed">بولنے کی رفتار</string>
+    <string name="voice_speed_slow">آہستہ</string>
+    <string name="voice_speed_normal">معمول</string>
+    <string name="voice_speed_fast">تیز</string>
+    <string name="voice_auto_read">ایگری بوٹ کے جواب اور اسکین کے نتائج بول کر سنائیں</string>
+    <string name="voice_test">آواز جانچیں</string>
+    <string name="voice_test_sentence">آداب! میں آپ کو ایپ پڑھ کر سناؤں گا۔ سننے کے لیے کسی بھی اسکرین کے اوپر اسپیکر کا بٹن دبائیں۔</string>
+    <string name="voice_install">میری زبان کی آواز ڈاؤن لوڈ کریں</string>
+    <string name="voice_settings_help">کسی بھی اسکرین کو سننے کے لیے اوپر اسپیکر دبائیں۔ ٹائپ کرنے کے بجائے بولنے کے لیے کسی بھی خانے میں مائیک دبائیں۔</string>
+    <string name="voice_missing_title">آواز انسٹال نہیں ہے</string>
+    <string name="voice_missing_message">اس فون میں ابھی %1$s آواز نہیں ہے۔ ایک بار ڈاؤن لوڈ کریں، پھر ایپ انٹرنیٹ کے بغیر بھی بول کر سنائے گی۔</string>
+    <string name="voice_no_engine">یہ فون پڑھ کر نہیں سنا سکتا۔ Play Store سے Google Speech Services انسٹال کریں۔</string>
+    <string name="voice_type_hint">یہ خانہ بھرنے کے لیے بولیں</string>
+    <string name="voice_speak_now">اب بولیے</string>
+    <string name="voice_no_number">کوئی نمبر سنائی نہیں دیا۔ مائیک دبا کر دوبارہ بولیں۔</string>
 </resources>

@@ -26,7 +26,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Calendar;
 import java.util.List;
 
-public class signup extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class signup extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, com.mvx.agriculture.voice.VoiceInput.Host {
+
+    private com.mvx.agriculture.voice.VoiceInput voiceInput;
 
     /** The picker opens either way; a fix just means it starts on the farmer. */
     private final ActivityResultLauncher<String[]> locationPermission = registerForActivityResult(
@@ -50,6 +52,8 @@ public class signup extends AppCompatActivity implements DatePickerDialog.OnDate
         setContentView(R.layout.activity_signup);
         SoftTheme.applyIfActive(findViewById(android.R.id.content));
         InsetsSupport.applyTo(this);
+        voiceInput = new com.mvx.agriculture.voice.VoiceInput(this);
+        voiceInput.attach(findViewById(android.R.id.content));
 
         database = new DatabaseHelper(this);
         session = new SessionManager(this);
@@ -209,5 +213,10 @@ public class signup extends AppCompatActivity implements DatePickerDialog.OnDate
 
     private static String text(TextInputEditText field) {
         return field.getText() == null ? "" : field.getText().toString().trim();
+    }
+
+    @Override
+    public com.mvx.agriculture.voice.VoiceInput voiceInput() {
+        return voiceInput;
     }
 }

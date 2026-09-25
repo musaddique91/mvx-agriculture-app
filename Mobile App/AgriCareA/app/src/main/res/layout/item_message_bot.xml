@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,8 +11,6 @@
         android:id="@+id/messageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginEnd="48dp"
         android:background="@drawable/bubble_bot"
         android:paddingStart="@dimen/space_m"
         android:paddingEnd="@dimen/space_m"
@@ -20,5 +19,23 @@
         android:textAppearance="?attr/textAppearanceBodyLarge"
         android:textColor="?attr/colorOnSurface"
         android:textIsSelectable="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/messageListen"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Early blight is a fungal disease…" />
-</FrameLayout>
+
+    <!-- Hear this answer: for farmers who would rather listen than read -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/messageListen"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/voice_listen"
+        app:icon="@drawable/ic_volume_up"
+        app:layout_constraintBottom_toBottomOf="@id/messageText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/messageText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

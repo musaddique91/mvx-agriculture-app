@@ -761,6 +761,7 @@ public class FieldMapFragment extends Fragment {
         final double acres = squareMetres / SQM_PER_ACRE;
 
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_save_field, null);
+        com.mvx.agriculture.voice.VoiceInput.attachIn(dialogView);
         TextInputEditText nameInput = dialogView.findViewById(R.id.fieldNameInput);
         MaterialAutoCompleteTextView cropInput = dialogView.findViewById(R.id.fieldCropInput);
         cropInput.setShowSoftInputOnFocus(false);

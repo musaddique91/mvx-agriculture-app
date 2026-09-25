@@ -289,6 +289,7 @@ public class MoneyFragment extends Fragment {
         }
 
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_money_entry, null);
+        com.mvx.agriculture.voice.VoiceInput.attachIn(dialogView);
         MaterialButtonToggleGroup kindGroup = dialogView.findViewById(R.id.moneyKind);
         View categoryLayout = dialogView.findViewById(R.id.moneyCategoryLayout);
         MaterialAutoCompleteTextView categoryInput = dialogView.findViewById(R.id.moneyCategory);
@@ -389,6 +390,7 @@ public class MoneyFragment extends Fragment {
                             LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     lp.topMargin = getResources().getDimensionPixelSize(R.dimen.space_s);
                     sharesContainer.addView(layout, lp);
+                    com.mvx.agriculture.voice.VoiceInput.attachIn(layout);
                     customInputs.add(input);
                 } else {
                     TextView row = new TextView(requireContext());

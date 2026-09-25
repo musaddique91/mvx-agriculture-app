@@ -47,6 +47,7 @@ public final class StartSeasonDialog {
         }
 
         View view = host.getLayoutInflater().inflate(R.layout.dialog_start_season, null);
+        com.mvx.agriculture.voice.VoiceInput.attachIn(view);
         MaterialAutoCompleteTextView cropInput = view.findViewById(R.id.seasonCropInput);
         MaterialButtonToggleGroup methodGroup = view.findViewById(R.id.seasonMethodGroup);
         TextInputLayout ageLayout = view.findViewById(R.id.seasonAgeLayout);

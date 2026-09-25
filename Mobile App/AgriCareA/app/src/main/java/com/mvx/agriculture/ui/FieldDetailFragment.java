@@ -213,6 +213,7 @@ public class FieldDetailFragment extends Fragment {
 
     private void showEditDialog() {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_save_field, null);
+        com.mvx.agriculture.voice.VoiceInput.attachIn(dialogView);
         TextInputEditText nameInput = dialogView.findViewById(R.id.fieldNameInput);
         MaterialAutoCompleteTextView cropInput = dialogView.findViewById(R.id.fieldCropInput);
         cropInput.setShowSoftInputOnFocus(false);
@@ -299,6 +300,7 @@ public class FieldDetailFragment extends Fragment {
 
     private void showAddNote() {
         View view = getLayoutInflater().inflate(R.layout.dialog_add_note, null);
+        com.mvx.agriculture.voice.VoiceInput.attachIn(view);
         ChipGroup categories = view.findViewById(R.id.noteCategories);
         TextInputEditText input = view.findViewById(R.id.noteInput);
 

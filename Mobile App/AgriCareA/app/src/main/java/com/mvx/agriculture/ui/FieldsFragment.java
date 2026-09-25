@@ -73,6 +73,7 @@ public class FieldsFragment extends Fragment {
 
     private void showEditDialog(Field field) {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_save_field, null);
+        com.mvx.agriculture.voice.VoiceInput.attachIn(dialogView);
         TextInputEditText nameInput = dialogView.findViewById(R.id.fieldNameInput);
         MaterialAutoCompleteTextView cropInput = dialogView.findViewById(R.id.fieldCropInput);
         cropInput.setShowSoftInputOnFocus(false);

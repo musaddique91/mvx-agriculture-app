@@ -439,4 +439,25 @@
     <string name="money_open">खेत का हिसाब खोलें</string>
     <string name="money_sold">%1$s बेचा</string>
     <string name="money_with_pending">बाकी भुगतान मिलने पर %1$s</string>
+
+    <!-- Voice help: listen to screens, speak into boxes -->
+    <string name="action_done">हो गया</string>
+    <string name="voice_listen">सुनें</string>
+    <string name="voice_stop">रोकें</string>
+    <string name="voice_settings_title">आवाज़ सहायता</string>
+    <string name="voice_speed">बोलने की गति</string>
+    <string name="voice_speed_slow">धीमी</string>
+    <string name="voice_speed_normal">सामान्य</string>
+    <string name="voice_speed_fast">तेज़</string>
+    <string name="voice_auto_read">एग्रीबॉट के जवाब और स्कैन नतीजे बोलकर सुनाएँ</string>
+    <string name="voice_test">आवाज़ जाँचें</string>
+    <string name="voice_test_sentence">नमस्ते! मैं आपको ऐप पढ़कर सुनाऊँगा। किसी भी स्क्रीन के ऊपर स्पीकर बटन दबाएँ और सुनें।</string>
+    <string name="voice_install">मेरी भाषा की आवाज़ डाउनलोड करें</string>
+    <string name="voice_settings_help">किसी भी स्क्रीन को सुनने के लिए ऊपर स्पीकर दबाएँ। टाइप करने की जगह बोलने के लिए किसी भी बॉक्स में माइक दबाएँ।</string>
+    <string name="voice_missing_title">आवाज़ इंस्टॉल नहीं है</string>
+    <string name="voice_missing_message">इस फ़ोन में अभी %1$s आवाज़ नहीं है। एक बार डाउनलोड करें, फिर ऐप बिना इंटरनेट के भी बोलकर सुनाएगा।</string>
+    <string name="voice_no_engine">यह फ़ोन पढ़कर नहीं सुना सकता। Play Store से Google Speech Services इंस्टॉल करें।</string>
+    <string name="voice_type_hint">यह बॉक्स भरने के लिए बोलें</string>
+    <string name="voice_speak_now">अब बोलिए</string>
+    <string name="voice_no_number">कोई संख्या सुनाई नहीं दी। माइक दबाकर फिर से बोलें।</string>
 </resources>

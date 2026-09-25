@@ -43,6 +43,19 @@ AgriBot and AI Photo Diagnosis respond directly in the user's active language.
 
 ---
 
+## 🔊 Voice Help (for farmers who prefer listening to reading)
+
+Everything works by voice in the app's current language (hi-IN, kn-IN, mr-IN, ur-IN, en-IN):
+
+- **Listen to any screen**: a speaker button in the toolbar reads the screen's title and content aloud (weather, mandi prices, schemes, crop journey, fields…). Tap it again to stop. It works from the live view tree, so new screens need no extra code.
+- **Speak instead of typing**: every text box gets a mic icon, including the add-money, save-field, scouting-note and start-season dialogs, plus login and signup. For number boxes (amount, quantity, rate, days) the number is pulled out of what was said, and Devanagari, Kannada and Urdu digits are handled.
+- **AgriBot and scan results aloud**: AgriBot answers and AI photo diagnoses are read out automatically (you can turn this off), and every answer bubble has its own listen button. The disease encyclopedia sheet has one too.
+- **Voice help settings** (toolbar ⋮ or drawer): speaking speed (slow / normal / fast), auto-read on/off, a test sentence, and a shortcut to download the phone's voice for your language. If the phone has no voice for the language, the app offers to download one; once downloaded it works offline.
+
+Code lives in `app/src/main/java/com/mvx/agriculture/voice/`: `Speaker` (one shared text-to-speech engine), `ScreenReader`, `VoiceInput` and `SpeechText` (text shaping, unit-tested in `SpeechTextTest`).
+
+---
+
 ## 🔐 Security & Authentication
 
 - **Password Hashing**: Passwords stored using salted **PBKDF2-HMAC-SHA1** (20,000 iterations). Legacy accounts automatically migrate upon login.
