@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Soft UI in the dark: the same modelling, a darker ground -->
+    <color name="soft_surface">#FF2B2F36</color>
+    <color name="soft_light">#FF373C45</color>
+    <color name="soft_dark">#FF1E2126</color>
+</resources>

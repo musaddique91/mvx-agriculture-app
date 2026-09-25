@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/tvPicture"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/early" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/space_l"
+        android:paddingEnd="@dimen/space_l"
+        android:paddingTop="@dimen/space_l"
+        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+        android:textStyle="bold"
+        tools:text="Tomato Early Blight" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/space_l"
+            android:paddingEnd="@dimen/space_l"
+            android:paddingTop="@dimen/space_m"
+            android:paddingBottom="@dimen/space_l">
+
+            <TextView style="@style/Text.Section" android:text="@string/section_definition" />
+            <TextView android:id="@+id/tvDefinition" style="@style/Text.Body" />
+
+            <TextView style="@style/Text.Section" android:text="@string/section_symptoms" />
+            <TextView android:id="@+id/tvSymptoms" style="@style/Text.Body" />
+
+            <TextView style="@style/Text.Section" android:text="@string/section_causes" />
+            <TextView android:id="@+id/tvCauses" style="@style/Text.Body" />
+
+            <TextView style="@style/Text.Section" android:text="@string/section_solutions" />
+            <TextView android:id="@+id/tvSolutions" style="@style/Text.Body" />
+
+            <TextView style="@style/Text.Section" android:text="@string/section_history" />
+            <TextView android:id="@+id/tvHistory" style="@style/Text.Body" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/sheetActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_m">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClose"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_close" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAskBot"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_s"
+            android:text="@string/action_ask_agribot" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.AgriCare.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/space_m"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_m">
+
+        <TextView
+            android:id="@+id/schemeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textStyle="bold"
+            tools:text="PM-KISAN" />
+
+        <TextView
+            android:id="@+id/schemeSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="Direct income support to landholding farmer families." />
+
+        <LinearLayout
+            android:id="@+id/schemeDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView style="@style/Text.Section" android:text="@string/scheme_benefit" />
+            <TextView android:id="@+id/schemeBenefit" style="@style/Text.Body" />
+            <TextView style="@style/Text.Section" android:text="@string/scheme_eligibility" />
+            <TextView android:id="@+id/schemeEligibility" style="@style/Text.Body" />
+            <TextView style="@style/Text.Section" android:text="@string/scheme_how" />
+            <TextView android:id="@+id/schemeHow" style="@style/Text.Body" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/schemeLink"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_m"
+                tools:text="pmkisan.gov.in" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

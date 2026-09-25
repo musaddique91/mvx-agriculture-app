@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clean, precise corner pin replacing the default osmdroid pointing-hand marker -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+
+    <!-- Dark shadow outline for visibility on bright satellite imagery -->
+    <path
+        android:fillColor="#CC000000"
+        android:pathData="M10,10m-9,0a9,9 0 1,1 18,0a9,9 0 1,1 -18,0" />
+
+    <!-- Pure white ring -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M10,10m-7.5,0a7.5,7.5 0 1,1 15,0a7.5,7.5 0 1,1 -15,0" />
+
+    <!-- Vibrant primary emerald green center dot -->
+    <path
+        android:fillColor="#FF2E7D32"
+        android:pathData="M10,10m-4.5,0a4.5,4.5 0 1,1 9,0a4.5,4.5 0 1,1 -9,0" />
+</vector>

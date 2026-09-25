@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
+    <!-- Light scheme -->
+    <color name="md_primary">#FF1B5E20</color>
+    <color name="md_on_primary">#FFFFFFFF</color>
+    <color name="md_primary_container">#FFA5E8A8</color>
+    <color name="md_on_primary_container">#FF002204</color>
+    <color name="md_secondary">#FF4E6650</color>
+    <color name="md_on_secondary">#FFFFFFFF</color>
+    <color name="md_secondary_container">#FFCFEBCF</color>
+    <color name="md_on_secondary_container">#FF0C1F10</color>
+    <color name="md_tertiary">#FFB26B00</color>
+    <color name="md_on_tertiary">#FFFFFFFF</color>
+    <color name="md_tertiary_container">#FFFFDEAB</color>
+    <color name="md_on_tertiary_container">#FF2A1800</color>
+    <color name="md_error">#FFB3261E</color>
+    <color name="md_on_error">#FFFFFFFF</color>
+    <color name="md_error_container">#FFF9DEDC</color>
+    <color name="md_on_error_container">#FF410E0B</color>
+    <color name="md_background">#FFF6FAF3</color>
+    <color name="md_on_background">#FF171D16</color>
+    <color name="md_surface">#FFF6FAF3</color>
+    <color name="md_on_surface">#FF171D16</color>
+    <color name="md_surface_variant">#FFDCE5DA</color>
+    <color name="md_on_surface_variant">#FF404942</color>
+    <color name="md_surface_container_lowest">#FFFFFFFF</color>
+    <color name="md_surface_container_low">#FFF0F5EC</color>
+    <color name="md_surface_container">#FFEAEFE5</color>
+    <color name="md_surface_container_high">#FFE4EADF</color>
+    <color name="md_surface_container_highest">#FFDEE4D9</color>
+    <color name="md_outline">#FF707972</color>
+    <color name="md_outline_variant">#FFC0C9BE</color>
+    <color name="md_inverse_surface">#FF2C322B</color>
+    <color name="md_inverse_on_surface">#FFEDF2E8</color>
+
+    <!-- Dark scheme -->
+    <color name="md_primary_dark">#FF8BD68F</color>
+    <color name="md_on_primary_dark">#FF00390A</color>
+    <color name="md_primary_container_dark">#FF0C5116</color>
+    <color name="md_on_primary_container_dark">#FFA5E8A8</color>
+    <color name="md_secondary_dark">#FFB4CFB4</color>
+    <color name="md_on_secondary_dark">#FF203624</color>
+    <color name="md_secondary_container_dark">#FF364D39</color>
+    <color name="md_on_secondary_container_dark">#FFCFEBCF</color>
+    <color name="md_tertiary_dark">#FFFFB95C</color>
+    <color name="md_on_tertiary_dark">#FF462B00</color>
+    <color name="md_tertiary_container_dark">#FF653F00</color>
+    <color name="md_on_tertiary_container_dark">#FFFFDEAB</color>
+    <color name="md_error_dark">#FFF2B8B5</color>
+    <color name="md_on_error_dark">#FF601410</color>
+    <color name="md_error_container_dark">#FF8C1D18</color>
+    <color name="md_on_error_container_dark">#FFF9DEDC</color>
+    <color name="md_background_dark">#FF0F140E</color>
+    <color name="md_on_background_dark">#FFDFE4DA</color>
+    <color name="md_surface_dark">#FF0F140E</color>
+    <color name="md_on_surface_dark">#FFDFE4DA</color>
+    <color name="md_surface_variant_dark">#FF404942</color>
+    <color name="md_on_surface_variant_dark">#FFC0C9BE</color>
+    <color name="md_surface_container_lowest_dark">#FF0A0F09</color>
+    <color name="md_surface_container_low_dark">#FF171D16</color>
+    <color name="md_surface_container_dark">#FF1B211A</color>
+    <color name="md_surface_container_high_dark">#FF252B24</color>
+    <color name="md_surface_container_highest_dark">#FF30362E</color>
+    <color name="md_outline_dark">#FF8A938B</color>
+    <color name="md_outline_variant_dark">#FF404942</color>
+    <color name="md_inverse_surface_dark">#FFDFE4DA</color>
+    <color name="md_inverse_on_surface_dark">#FF2C322B</color>
+
+    <!-- Accents used by the feature tiles so the grid does not read as one grey block -->
+    <color name="accent_scan">#FF2E7D32</color>
+    <color name="accent_scan_bg">#FFD7F0D8</color>
+    <color name="accent_chat">#FF00695C</color>
+    <color name="accent_chat_bg">#FFCDEBE6</color>
+    <color name="accent_market">#FFB26B00</color>
+    <color name="accent_market_bg">#FFFFE8BE</color>
+    <color name="accent_weather">#FF0277BD</color>
+    <color name="accent_weather_bg">#FFCFE7F7</color>
+    <color name="accent_book">#FF6A1B9A</color>
+    <color name="accent_book_bg">#FFEBD6F5</color>
+    <color name="accent_calendar">#FFC62828</color>
+    <color name="accent_calendar_bg">#FFFBD9D9</color>
+    <color name="accent_calc">#FF37474F</color>
+    <color name="accent_calc_bg">#FFDCE4E8</color>
+    <color name="accent_map">#FF2E7D32</color>
+    <color name="accent_map_bg">#FFD7F0D8</color>
+    <color name="accent_scheme">#FF1565C0</color>
+    <color name="accent_scheme_bg">#FFD4E4F7</color>
+    <color name="accent_money">#FF2E7D32</color>
+    <color name="accent_money_bg">#FFD7F0D8</color>
+
+    <color name="hero_scrim_top">#99000000</color>
+    <color name="hero_scrim_bottom">#E60B2410</color>
+    <color name="bounding_box_color">#FF7CF08A</color>
+
+
+    <!-- Soft UI: one flat ground, lit from the top-left -->
+    <color name="soft_surface">#FFE4E9F2</color>
+    <color name="soft_light">#FFFFFFFF</color>
+    <color name="soft_dark">#FFB8C0CE</color>
+    <color name="soft_on_surface">#FF3D4757</color>
+    <color name="soft_on_surface_variant">#FF7A8699</color>
+    <color name="soft_primary">#FF4A7C59</color>
+    <color name="soft_on_primary">#FFFFFFFF</color>
+    <color name="soft_primary_container">#FFD3DEE6</color>
+    <color name="soft_on_primary_container">#FF2F4A38</color>
+    <color name="soft_outline">#FFB8C0CE</color>
+
+    <color name="soft_surface_dark">#FF2B2F36</color>
+    <color name="soft_light_dark">#FF373C45</color>
+    <color name="soft_dark_dark">#FF1E2126</color>
+    <color name="soft_on_surface_dark">#FFD7DDE8</color>
+    <color name="soft_on_surface_variant_dark">#FF98A2B3</color>
+    <color name="soft_primary_dark">#FF8FBF9E</color>
+    <color name="soft_primary_container_dark">#FF333941</color>
+    <color name="soft_on_primary_container_dark">#FFD7DDE8</color>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Where the farmer tapped inside a field. Material Symbols "location_on", Apache License 2.0. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp" android:height="40dp"
+    android:viewportWidth="960" android:viewportHeight="960">
+    <!-- Dark halo, slightly larger, so it reads on bright and dark imagery alike -->
+    <group android:pivotX="480" android:pivotY="-480" android:scaleX="1.14" android:scaleY="1.14"
+        android:translateY="960">
+        <path android:fillColor="#99000000" android:pathData="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 400Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Z" />
+    </group>
+    <group android:translateY="960">
+        <path android:fillColor="#FFFFFFFF" android:pathData="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 400Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Z" />
+    </group>
+</vector>

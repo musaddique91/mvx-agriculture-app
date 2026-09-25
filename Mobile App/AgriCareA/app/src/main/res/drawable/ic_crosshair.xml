@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Deliberately a target, not a dot: this is the exact spot a corner lands on. -->
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="2.5"
+        android:pathData="M24,6 L24,18 M24,30 L24,42 M6,24 L18,24 M30,24 L42,24" />
+    <path android:strokeColor="#CC000000" android:strokeWidth="5" android:fillColor="#00000000"
+        android:pathData="M24,17 A7,7 0 1,1 23.99,17" />
+    <path android:strokeColor="#FF2E7D32" android:strokeWidth="3" android:fillColor="#66FFFFFF"
+        android:pathData="M24,17 A7,7 0 1,1 23.99,17" />
+</vector>

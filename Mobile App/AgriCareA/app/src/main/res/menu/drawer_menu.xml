@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/drawer_home"    android:icon="@drawable/ic_home"   android:title="@string/nav_home" />
+        <item android:id="@+id/drawer_scan"    android:icon="@drawable/ic_camera"   android:title="@string/nav_scan" />
+        <item android:id="@+id/drawer_market"  android:icon="@drawable/ic_rupee"  android:title="@string/nav_market" />
+        <item android:id="@+id/drawer_weather" android:icon="@drawable/ic_weather" android:title="@string/nav_weather" />
+        <item android:id="@+id/drawer_chat"    android:icon="@drawable/ic_chat"   android:title="@string/nav_chat" />
+    </group>
+
+    <item android:title="@string/drawer_group_tools">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/drawer_encyclopedia" android:icon="@drawable/ic_book"       android:title="@string/feature_encyclopedia" />
+                <item android:id="@+id/drawer_calendar"     android:icon="@drawable/ic_calendar"   android:title="@string/feature_calendar" />
+                <item android:id="@+id/drawer_calculator"   android:icon="@drawable/ic_calculator" android:title="@string/feature_calculator" />
+                <item android:id="@+id/drawer_fields"       android:icon="@drawable/ic_fields"        android:title="@string/title_fields" />
+                <item android:id="@+id/drawer_field"        android:icon="@drawable/ic_map" android:title="@string/feature_field" />
+                <item android:id="@+id/drawer_money"        android:icon="@drawable/ic_wallet" android:title="@string/money_title" />
+                <item android:id="@+id/drawer_schemes"      android:icon="@drawable/ic_scheme"     android:title="@string/feature_schemes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/drawer_group_account">
+        <menu>
+            <item android:id="@+id/drawer_language" android:icon="@drawable/ic_translate" android:title="@string/action_language" />
+            <item android:id="@+id/drawer_theme"    android:icon="@drawable/ic_palette"   android:title="@string/action_theme" />
+            <item android:id="@+id/drawer_profile"  android:icon="@drawable/ic_person"    android:title="@string/action_edit_profile" />
+            <item android:id="@+id/drawer_about"    android:icon="@drawable/ic_info"      android:title="@string/title_about" />
+            <item android:id="@+id/drawer_logout"   android:icon="@drawable/ic_logout"    android:title="@string/action_log_out" />
+        </menu>
+    </item>
+</menu>

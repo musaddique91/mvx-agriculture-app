@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_gutter"
+        android:paddingEnd="@dimen/screen_gutter"
+        android:paddingBottom="@dimen/space_xl">
+
+        <TextView
+            android:id="@+id/greeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+            android:textStyle="bold"
+            tools:text="Good morning, musa" />
+
+        <TextView
+            android:id="@+id/subGreeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:drawablePadding="@dimen/space_xs"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:drawableStartCompat="@drawable/ic_location"
+            app:drawableTint="?attr/colorOnSurfaceVariant"
+            tools:text="Today in Belagavi" />
+
+        <!-- Weather snapshot -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/weatherCard"
+            style="@style/Widget.AgriCare.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_m"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_l">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/weatherTemp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="?attr/textAppearanceDisplaySmall"
+                        android:textColor="?attr/colorOnPrimaryContainer"
+                        android:textStyle="bold"
+                        tools:text="27°" />
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_weather"
+                        app:tint="?attr/colorOnPrimaryContainer" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/weatherSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnPrimaryContainer"
+                    tools:text="Humidity 74% · Wind 9 km/h · 3 mm rain today" />
+
+                <TextView
+                    android:id="@+id/weatherAdvice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:drawablePadding="@dimen/space_xs"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    android:textColor="?attr/colorOnPrimaryContainer"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_check_circle"
+                    app:drawableTint="?attr/colorOnPrimaryContainer"
+                    tools:text="Good spraying window" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView style="@style/Text.GroupHeading" android:text="@string/home_quick_actions" />
+
+        <!-- Two big actions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <include android:id="@+id/tileScan" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+
+            <Space android:layout_width="@dimen/space_m" android:layout_height="1dp" />
+
+            <include android:id="@+id/tileChat" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView style="@style/Text.GroupHeading" android:text="@string/home_tools" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <include android:id="@+id/tileMarket" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+            <Space android:layout_width="@dimen/space_m" android:layout_height="1dp" />
+            <include android:id="@+id/tileCalendar" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_m"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <include android:id="@+id/tileCalculator" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+            <Space android:layout_width="@dimen/space_m" android:layout_height="1dp" />
+            <include android:id="@+id/tileField" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_m"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <include android:id="@+id/tileEncyclopedia" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+            <Space android:layout_width="@dimen/space_m" android:layout_height="1dp" />
+            <include android:id="@+id/tileSchemes" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_m"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <include android:id="@+id/tileMoney" layout="@layout/item_feature_card"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+            <Space android:layout_width="@dimen/space_m" android:layout_height="1dp" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- Tip of the day: rebuilt from today's forecast, season and fields -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tipCard"
+            style="@style/Widget.AgriCare.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_l"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/space_l">
+
+                <ImageView
+                    android:id="@+id/tipIcon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/circle_background"
+                    android:contentDescription="@null"
+                    android:padding="11dp"
+                    tools:src="@drawable/ic_weather" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_m"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tipTopic"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAppearance="?attr/textAppearanceLabelLarge"
+                            android:textStyle="bold"
+                            tools:text="Disease watch" />
+
+                        <TextView
+                            android:id="@+id/tipDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.7"
+                            android:textAppearance="?attr/textAppearanceBodySmall"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            tools:text="15 Sep" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tipBody"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurface"
+                        tools:text="Humidity is 91% at a mild temperature — the conditions blight waits for." />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

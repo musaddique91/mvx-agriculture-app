@@ -1,0 +1,3247 @@
+{
+  "_note": "Crop journeys: what to do and when, from planting to harvest. 'day' counts days after planting in the main field. Tasks with \"basis\": \"age\" count the crop's whole age instead, so seedlings raised elsewhere reach them sooner. Doses are converted from per-hectare source values to per acre (1 ha = 2.471 acres) and to common products: urea 46% N, muriate of potash (MOP) 60% K2O, single superphosphate (SSP) 16% P2O5. These are blanket recommendations; a soil health card or the local agriculture officer may advise otherwise. Pesticides whose current approval status could not be confirmed are deliberately not named. Herbicide and pesticide rates say 'at the label dose' because sources do not always state whether a rate is active ingredient or product; the source figure is given only as a reference.",
+  "version": 1,
+  "crops": {
+    "Sugarcane": {
+      "sources": [
+        {
+          "title": "TNAU Agritech Portal: Sugarcane crop production",
+          "url": "https://agritech.tnau.ac.in/agriculture/sugarcrops_sugarcane.html"
+        },
+        {
+          "title": "TNAU Agritech Portal: Sugarcane insect pests",
+          "url": "https://agritech.tnau.ac.in/crop_protection/sugarcane/crop_prot_crop_insectpest%20_sugarcane_1.html"
+        }
+      ],
+      "methods": [
+        {
+          "id": "setts",
+          "seedlingAgeDays": 0
+        },
+        {
+          "id": "seedlings",
+          "seedlingAgeDays": 30
+        }
+      ],
+      "harvestAgeDays": 330,
+      "stages": [
+        {
+          "id": "germination",
+          "name": "Germination",
+          "fromDay": 0,
+          "toDay": 35,
+          "water": "Keep the soil just moist: light, frequent watering of 2-3 cm, especially on sandy soil."
+        },
+        {
+          "id": "tillering",
+          "name": "Tillering",
+          "fromDay": 36,
+          "toDay": 100,
+          "water": "Irrigate every 8 days on sandy soil, every 10 days on clay soil."
+        },
+        {
+          "id": "grand_growth",
+          "name": "Grand growth",
+          "fromDay": 101,
+          "toDay": 270,
+          "water": "Irrigate every 8 days on sandy soil, every 10 days on clay soil. This is when the cane needs the most water."
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "fromDay": 271,
+          "toDay": 400,
+          "water": "Irrigate less: every 10 days on sandy soil, every 14 days on clay soil."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "organic_manure",
+          "day": -7,
+          "type": "manure",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Add organic manure before the last ploughing",
+          "detail": "Spread farmyard manure 5 tonnes per acre, or compost 10 tonnes per acre, or pressmud 15 tonnes per acre, then plough it in."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Basal fertiliser in the furrows",
+          "detail": "Apply single superphosphate 253 kg per acre (about 5 bags) along the furrows and mix it in with a hand hoe. On zinc- or iron-deficient soil also add zinc sulphate 15 kg and ferrous sulphate 40 kg per acre."
+        },
+        {
+          "id": "sett_treatment",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "setts"
+          ],
+          "title": "Treat the setts before planting",
+          "detail": "Use setts from a healthy 6-7 month nursery crop. Soak them for 15 minutes in 100 litres of water with 50 g carbendazim, 200 ml malathion and 1 kg urea."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On moist soil, spray atrazine at the label dose (the guide gives 2 kg per hectare) using a fan or deflector nozzle."
+        },
+        {
+          "id": "trash_mulch",
+          "day": 3,
+          "type": "care",
+          "methods": [
+            "setts"
+          ],
+          "title": "Mulch the ridges with cane trash",
+          "detail": "Cover the ridges with dry cane trash about 10 cm thick within a week of planting. It holds moisture, keeps weeds down and reduces early shoot borer. In heavy or wet soil, mulch after 21 days instead. Skip it where termites are a problem."
+        },
+        {
+          "id": "gap_filling",
+          "day": 21,
+          "type": "care",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Fill the gaps",
+          "detail": "Replace setts that did not sprout with sprouted setts or polybag seedlings, before day 30."
+        },
+        {
+          "id": "first_weeding",
+          "day": 25,
+          "type": "weeding",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "First weeding",
+          "detail": "Hoe along the ridges and remove weeds in the furrows. Where weeds are heavy, weed along the crop row and dig the ridges with a spade."
+        },
+        {
+          "id": "fertilizer_1",
+          "day": 30,
+          "type": "fertilizer",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "First urea and potash dose",
+          "detail": "Apply urea 81 kg and muriate of potash 25 kg per acre near the clumps, then irrigate. Water-scarce fields: urea 66 kg per acre. If you use Azospirillum or Gluconacetobacter biofertiliser (about 1 kg per acre mixed with manure), apply it on a different day from the chemical fertiliser."
+        },
+        {
+          "id": "shoot_borer_check",
+          "day": 30,
+          "type": "pest_watch",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Check for early shoot borer",
+          "detail": "Look for dead hearts: the central shoot dries and pulls out easily. Count affected shoots in a few rows. Biological control: release 50 Sturmiopsis inferens females per acre on day 30 and again on day 45."
+        },
+        {
+          "id": "light_earthing_up",
+          "day": 45,
+          "type": "care",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Light earthing up",
+          "detail": "Widen the furrow and pull a little soil onto the base of the shoots."
+        },
+        {
+          "id": "shoot_borer_granules",
+          "day": 45,
+          "type": "goli",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "optional": true,
+          "title": "Borer granules, only if needed",
+          "detail": "Only if more than 15 of every 100 shoots show dead hearts: apply chlorantraniliprole 0.4% G at 7.5 kg per acre, or fipronil 0.3% GR at 10-13 kg per acre, near the base of the plants, then irrigate. Use only products approved for sugarcane and follow the label."
+        },
+        {
+          "id": "second_weeding",
+          "day": 55,
+          "type": "weeding",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Second weeding",
+          "detail": "Hoe along the ridges and clear the furrows."
+        },
+        {
+          "id": "fertilizer_2",
+          "day": 60,
+          "type": "fertilizer",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Second urea and potash dose",
+          "detail": "Apply urea 81 kg and muriate of potash 25 kg per acre near the clumps, then irrigate. Water-scarce fields: urea 66 kg per acre."
+        },
+        {
+          "id": "third_weeding",
+          "day": 85,
+          "type": "weeding",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Third weeding",
+          "detail": "Last weeding before the canopy closes."
+        },
+        {
+          "id": "fertilizer_3",
+          "day": 90,
+          "type": "fertilizer",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Third urea and potash dose",
+          "detail": "Apply urea 81 kg and muriate of potash 25 kg per acre near the clumps, then irrigate. Water-scarce fields: urea 66 kg per acre."
+        },
+        {
+          "id": "earthing_up",
+          "day": 95,
+          "type": "care",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Earthing up",
+          "detail": "After the third dose, run a plough along the ridges to earth up the cane. This supports the stalks and covers the fertiliser."
+        },
+        {
+          "id": "trichogramma_1",
+          "day": 120,
+          "type": "pest_control",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Internode borer: release Trichogramma (1 of 6)",
+          "detail": "Release the egg parasitoid Trichogramma chilonis, 1 cc per acre. Repeat every 15 days, six releases in all. In rain or where ants are active, release from cups covered with mosquito net."
+        },
+        {
+          "id": "trichogramma_2",
+          "day": 135,
+          "type": "pest_control",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Internode borer: release Trichogramma (2 of 6)",
+          "detail": "Release Trichogramma chilonis, 1 cc per acre."
+        },
+        {
+          "id": "detrashing_1",
+          "day": 150,
+          "type": "care",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "First detrashing",
+          "detail": "Strip off the dry lower leaves. This lowers internode borer and scale insect attack."
+        },
+        {
+          "id": "second_earthing_up",
+          "day": 150,
+          "type": "care",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Second earthing up",
+          "detail": "Earth up again with a spade."
+        },
+        {
+          "id": "trichogramma_3",
+          "day": 150,
+          "type": "pest_control",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Internode borer: release Trichogramma (3 of 6)",
+          "detail": "Release Trichogramma chilonis, 1 cc per acre."
+        },
+        {
+          "id": "trichogramma_4",
+          "day": 165,
+          "type": "pest_control",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Internode borer: release Trichogramma (4 of 6)",
+          "detail": "Release Trichogramma chilonis, 1 cc per acre."
+        },
+        {
+          "id": "woolly_aphid_check",
+          "day": 180,
+          "type": "pest_watch",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Check for woolly aphid",
+          "detail": "Look under the leaves for white, woolly colonies. Do not move infested leaves to other fields or use them as seed cane. Where it is spreading, ask your agriculture officer before spraying, and never feed sprayed leaves to cattle."
+        },
+        {
+          "id": "trichogramma_5",
+          "day": 180,
+          "type": "pest_control",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Internode borer: release Trichogramma (5 of 6)",
+          "detail": "Release Trichogramma chilonis, 1 cc per acre."
+        },
+        {
+          "id": "trichogramma_6",
+          "day": 195,
+          "type": "pest_control",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Internode borer: release Trichogramma (6 of 6)",
+          "detail": "Release Trichogramma chilonis, 1 cc per acre."
+        },
+        {
+          "id": "detrashing_2",
+          "day": 210,
+          "type": "care",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Second detrashing",
+          "detail": "Strip off the dry lower leaves again and drain any standing water."
+        },
+        {
+          "id": "propping",
+          "day": 210,
+          "type": "care",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Prop the cane",
+          "detail": "Tie the cane in double lines with twisted trash so it does not fall over."
+        },
+        {
+          "id": "maturity_test",
+          "day": 300,
+          "basis": "age",
+          "type": "harvest",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Test if the cane is ready",
+          "detail": "Check juice with a hand refractometer. Brix of 18-20% and the same reading at the top and bottom of the cane means it is ready. Arrange the factory cutting order."
+        },
+        {
+          "id": "harvest",
+          "day": 330,
+          "basis": "age",
+          "type": "harvest",
+          "methods": [
+            "setts",
+            "seedlings"
+          ],
+          "title": "Harvest",
+          "detail": "Early varieties at 10-11 months, mid-season varieties at 11-12 months. Harvest at peak maturity and cut at ground level."
+        }
+      ]
+    },
+    "Maize": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 100,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Germination and establishment",
+          "fromDay": 0,
+          "toDay": 14,
+          "water": "Irrigate right after sowing, give a life irrigation on day 4, then again around day 12."
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative",
+          "fromDay": 15,
+          "toDay": 39,
+          "water": "Irrigate around day 25 and 36 on heavy soil, or around day 22, 32 and 40 on light soil."
+        },
+        {
+          "id": "flowering",
+          "name": "Tasselling and flowering",
+          "fromDay": 40,
+          "toDay": 65,
+          "water": "The most critical stage. Irrigate well around day 48 and 60 on heavy soil, or day 50, 60 and 72 on light soil. Water stress now cuts yield sharply."
+        },
+        {
+          "id": "maturity",
+          "name": "Grain filling and maturity",
+          "fromDay": 66,
+          "toDay": 120,
+          "water": "Irrigate less: around day 72 and 85 on heavy soil, or day 85 and 95 on light soil."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "neem_cake",
+          "day": -7,
+          "type": "manure",
+          "methods": [
+            "seed"
+          ],
+          "title": "Neem cake at the last ploughing",
+          "detail": "Apply neem cake 100 kg per acre during the last ploughing. It helps keep fall armyworm down."
+        },
+        {
+          "id": "seed_treatment",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Treat the seed",
+          "detail": "Treat seed with carbendazim 2 g or thiram 4 g per kg against seed-borne disease, then with Azospirillum just before sowing. Sow 8 kg of hybrid seed per acre at 60 x 25 cm."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Hybrids: urea 55 kg, single superphosphate 190 kg and muriate of potash 51 kg per acre, placed in a furrow 6 cm deep beside the ridge and covered. Add zinc sulphate 15 kg per acre. Varieties need less: urea 30 kg, superphosphate 158 kg, potash 34 kg."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "Between day 3 and 5, on moist soil, spray atrazine at the label dose (the guide gives 0.5 kg per hectare) with a flat fan nozzle. If a pulse is intercropped, use pendimethalin instead: atrazine harms pulses."
+        },
+        {
+          "id": "armyworm_traps",
+          "day": 10,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Set fall armyworm traps",
+          "detail": "From day 10 to 15, set about 20 pheromone traps per acre and a solar light trap to catch fall armyworm moths early."
+        },
+        {
+          "id": "thinning",
+          "day": 12,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Thin and fill gaps",
+          "detail": "Keep one healthy seedling per hole and remove the rest. Resow gaps and irrigate straight away."
+        },
+        {
+          "id": "armyworm_check_1",
+          "day": 15,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Fall armyworm check: early whorl",
+          "detail": "Look into the whorl for ragged holes and sawdust-like droppings. If you find them, spray azadirachtin 1% at 20 ml or emamectin benzoate 5 SG at 4 g per 10 litres of water into the whorl. Use products approved for maize and follow the label."
+        },
+        {
+          "id": "top_dressing_1",
+          "day": 25,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "First urea top dressing",
+          "detail": "Hybrids: urea 110 kg per acre along the furrows, covered with soil, then irrigate. Varieties: urea 59 kg per acre."
+        },
+        {
+          "id": "weeding_earthing_up",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Weed and earth up",
+          "detail": "Hoe and hand-weed, then earth up and re-form the ridges so the plants stand on top. This gives them anchorage."
+        },
+        {
+          "id": "armyworm_check_2",
+          "day": 40,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Fall armyworm check: late whorl",
+          "detail": "Check the whorls again. If larvae are feeding, spray spinetoram 12 SC at 5 ml, or the fungus Metarhizium anisopliae at 80 g, per 10 litres of water. Use products approved for maize and follow the label."
+        },
+        {
+          "id": "top_dressing_2",
+          "day": 45,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second urea top dressing",
+          "detail": "Hybrids: urea 55 kg per acre along the furrows, covered with soil, then irrigate. Varieties: urea 30 kg per acre."
+        },
+        {
+          "id": "armyworm_check_3",
+          "day": 60,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Fall armyworm check: tassels and cobs",
+          "detail": "Check tassels and young cobs. If larvae are feeding, spray chlorantraniliprole 18.5 SC at 4 ml per 10 litres of water. Use products approved for maize and follow the label."
+        },
+        {
+          "id": "harvest",
+          "day": 95,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Harvest",
+          "detail": "Harvest when the husk covering the cob turns yellow and dry and the grains are hard. Most hybrids are ready at 95 to 110 days.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Cotton": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 160,
+      "stages": [
+        {
+          "id": "germination",
+          "name": "Germination",
+          "fromDay": 0,
+          "toDay": 15,
+          "water": "Irrigate right after sowing, then give a life irrigation on day 5 to help seedlings emerge."
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative",
+          "fromDay": 16,
+          "toDay": 44,
+          "water": "Irrigate around day 20 (three days after weeding), then around day 35 on light soil or day 40 on heavy soil."
+        },
+        {
+          "id": "flowering",
+          "name": "Flowering and boll formation",
+          "fromDay": 45,
+          "toDay": 100,
+          "water": "Irrigate well: about every 12 days on light soil (day 48, 60, 72, 84, 96) or every 15 days on heavy soil (day 55, 70, 85, 100). Heavy rain or flooding now makes flowers and young bolls drop."
+        },
+        {
+          "id": "maturity",
+          "name": "Boll maturity and picking",
+          "fromDay": 101,
+          "toDay": 180,
+          "water": "Irrigate less, about every 10-12 days, and stop irrigating after day 150."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "seed_and_spacing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Sow on ridges",
+          "detail": "Sow on ridges 75 cm apart (wider on fertile soil). Treat seed with biocontrol agents first, then with Azospirillum and phosphobacteria."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "The guide's blanket dose is 80:40:40 kg NPK per hectare, for varieties: in all, urea 70 kg, single superphosphate 101 kg and muriate of potash 27 kg per acre. Now apply all the superphosphate, plus half the urea (35 kg) and half the potash (13.5 kg) for varieties, or a third of the urea (23 kg) and all the potash for hybrids. Put it in a band two-thirds of the way down the ridge. Bt hybrids often need more; follow a soil test if you have one."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On moist soil, spray pendimethalin at the label dose (the guide gives 1 litre per hectare). This keeps the field weed-free for about 40 days."
+        },
+        {
+          "id": "gap_filling",
+          "day": 10,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Fill gaps",
+          "detail": "Dibble 3-4 seeds in each gap and water them by pot."
+        },
+        {
+          "id": "thinning",
+          "day": 15,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Thin seedlings",
+          "detail": "Keep one seedling per hole on fertile soil, or two on poor soil."
+        },
+        {
+          "id": "hand_weeding_no_herbicide",
+          "day": 18,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Hoe and weed, if no herbicide was used",
+          "detail": "If you did not spray a pre-emergence herbicide, hoe and hand-weed between day 18 and 20.",
+          "optional": true
+        },
+        {
+          "id": "sucking_pest_check",
+          "day": 30,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check for sucking pests",
+          "detail": "Turn over leaves and count. Act only above these levels: thrips or leafhoppers 50 per 50 leaves, aphids on 15% of plants, whiteflies 5-10 per leaf. Intercropping with cowpea, green gram, black gram or soybean encourages natural enemies. Use products approved for cotton and follow the label."
+        },
+        {
+          "id": "top_dressing_1",
+          "day": 45,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "First top dressing",
+          "detail": "Varieties: the remaining urea 35 kg and potash 13.5 kg per acre. Hybrids: urea 23 kg per acre. Then reform the ridges so plants stand on top."
+        },
+        {
+          "id": "weeding_earthing_up",
+          "day": 45,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Weed and earth up",
+          "detail": "Hand-weed or run a power weeder, then earth up. This keeps the field clean until about day 60."
+        },
+        {
+          "id": "bollworm_traps",
+          "day": 45,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Set bollworm pheromone traps",
+          "detail": "Set about 5 pheromone traps per acre for each bollworm (pink, American, spotted) to see when moths arrive. Pick and destroy rosette flowers, which hide pink bollworm."
+        },
+        {
+          "id": "naa_spray_1",
+          "day": 60,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Spray NAA against square and bud drop",
+          "detail": "Spray NAA at 40 ppm (40 mg in 1 litre of water) to reduce early shedding of buds and squares."
+        },
+        {
+          "id": "top_dressing_2",
+          "day": 65,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second top dressing (hybrids)",
+          "detail": "Hybrids: the last urea 23 kg per acre. Varieties have had their full dose.",
+          "optional": true
+        },
+        {
+          "id": "bollworm_check_1",
+          "day": 75,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check for bollworms",
+          "detail": "Open some squares and green bolls. Act only above these levels: pink, spotted or spiny bollworm in 10% of squares or bolls, or American bollworm at one egg or larva per plant. Use products approved for cotton and follow the label."
+        },
+        {
+          "id": "reddening_check",
+          "day": 80,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Leaves turning red?",
+          "detail": "If leaves turn red, spray magnesium sulphate 0.5% with urea 1% and zinc sulphate 0.1%.",
+          "optional": true
+        },
+        {
+          "id": "naa_spray_2",
+          "day": 90,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second NAA spray",
+          "detail": "Spray NAA again at 40 ppm (40 mg in 1 litre of water)."
+        },
+        {
+          "id": "bollworm_check_2",
+          "day": 105,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check bolls again",
+          "detail": "Check for pink bollworm in bolls: 10% infested bolls is the level to act on. Use products approved for cotton and follow the label."
+        },
+        {
+          "id": "picking",
+          "day": 130,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Start picking",
+          "detail": "Pick fully opened bolls, grading good and poor kapas separately. Dry kapas in the shade straight away, never in direct sun, which weakens the fibre. Repeat picking as more bolls open.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Soybean": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 95,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Germination and establishment",
+          "fromDay": 0,
+          "toDay": 20,
+          "water": "Irrigate right after sowing and give a life irrigation on day 3. Do not let water stand: soybean is very sensitive to waterlogging."
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative",
+          "fromDay": 21,
+          "toDay": 38,
+          "water": "Irrigate every 7-10 days in summer or every 10-15 days in winter, depending on soil and rain."
+        },
+        {
+          "id": "flowering_pods",
+          "name": "Flowering and pod filling",
+          "fromDay": 39,
+          "toDay": 80,
+          "water": "Do not let the crop run short of water from flowering to maturity. Still drain any standing water."
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "fromDay": 81,
+          "toDay": 110,
+          "water": "Irrigate lightly or stop as leaves yellow and pods dry."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "seed_treatment",
+          "day": -1,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Treat the seed a day before sowing",
+          "detail": "Treat seed with carbendazim or thiram 2 g per kg, or with Trichoderma viride 4 g per kg. Then treat with Rhizobium and phosphobacteria (3 packets each for a hectare's seed), dry in shade for 15 minutes, and sow. Do not mix fungicide with the biocontrol or bacterial cultures."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser, the whole dose",
+          "detail": "Irrigated: urea 18 kg, single superphosphate 202 kg, muriate of potash 27 kg and gypsum 89 kg per acre, all at sowing. Rainfed: urea 18 kg, superphosphate 101 kg, potash 13.5 kg and gypsum 45 kg per acre. Where the soil is deficient, add zinc sulphate 10 kg per acre."
+        },
+        {
+          "id": "sowing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Sow",
+          "detail": "Dibble seed 2-3 cm deep at 30 cm between rows and 5 cm between plants, then irrigate."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 1,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Weed spray after sowing",
+          "detail": "On moist soil, spray pendimethalin at the label dose (the guide gives 1 litre per hectare)."
+        },
+        {
+          "id": "weeding_no_herbicide_1",
+          "day": 20,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "First hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed now and again on day 35.",
+          "optional": true
+        },
+        {
+          "id": "virus_check",
+          "day": 25,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Remove virus-infected plants",
+          "detail": "Pull out and destroy plants with yellow mosaic or bud blight until day 30. Whiteflies and thrips spread these viruses; if they are many, ask your agriculture officer before spraying. Use products approved for soybean and follow the label."
+        },
+        {
+          "id": "hand_weeding",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding keeps the crop clean after the weed spray."
+        },
+        {
+          "id": "weeding_no_herbicide_2",
+          "day": 35,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second hand weeding, if no herbicide was used",
+          "detail": "The second of two hand weedings when no weed spray was used.",
+          "optional": true
+        },
+        {
+          "id": "pre_flowering_spray",
+          "day": 35,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Growth spray before flowering",
+          "detail": "Spray NAA 40 mg with salicylic acid 100 mg in each litre of water. Repeat 15 days later."
+        },
+        {
+          "id": "caterpillar_check",
+          "day": 35,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check for leaf-eating caterpillars",
+          "detail": "Look for Spodoptera, Helicoverpa and semilooper caterpillars, girdle beetle rings on stems, and leaf miner. Start with a Bacillus thuringiensis spray where caterpillars are feeding; if damage keeps spreading, chlorantraniliprole 18.5 SC or spinetoram 11.7 SC. Use products approved for soybean and follow the label."
+        },
+        {
+          "id": "flowering_dap_spray",
+          "day": 40,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "DAP spray at flowering",
+          "detail": "Spray DAP 20 g (or urea 20 g) in each litre of water at flowering. Repeat 15 days later."
+        },
+        {
+          "id": "rust_check",
+          "day": 40,
+          "type": "disease_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Watch for rust",
+          "detail": "Look under leaves for small brown pustules at flowering. If rust appears, spray propiconazole or hexaconazole at 0.1%. Use products approved for soybean and follow the label."
+        },
+        {
+          "id": "pre_flowering_spray_2",
+          "day": 50,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second growth spray",
+          "detail": "Spray NAA 40 mg with salicylic acid 100 mg in each litre of water again."
+        },
+        {
+          "id": "flowering_dap_spray_2",
+          "day": 55,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second DAP spray",
+          "detail": "Spray DAP 20 g (or urea 20 g) in each litre of water again."
+        },
+        {
+          "id": "harvest",
+          "day": 90,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Harvest",
+          "detail": "Leaves turning yellow and dropping mean the crop is maturing. Cut whole plants when most pods have turned yellow, then dry and thresh. Most varieties take 90-100 days.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Tur (Pigeon pea)": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 170,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 30
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative",
+          "fromDay": 31,
+          "toDay": 119
+        },
+        {
+          "id": "flowering_pods",
+          "name": "Flowering and pod filling",
+          "fromDay": 120,
+          "toDay": 160
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "fromDay": 161,
+          "toDay": 200
+        }
+      ],
+      "tasks": [
+        {
+          "id": "seed_treatment",
+          "day": -1,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Treat the seed a day before sowing",
+          "detail": "Treat seed with carbendazim or thiram 2 g per kg, or with Trichoderma viride 4 g per kg, a day before sowing. Then treat with Rhizobium and dry in shade for 15 minutes before sowing. Do not mix fungicide with the biocontrol or bacterial cultures."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser, the whole dose",
+          "detail": "Irrigated: urea 22 kg, single superphosphate 126 kg and muriate of potash 17 kg per acre, plus zinc sulphate 10 kg. Rainfed: urea 11 kg, superphosphate 63 kg and potash 8.5 kg per acre. Superphosphate also supplies the sulphur the crop needs; if you use a different phosphate, add gypsum."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On day 3, spray pendimethalin at the label dose (the guide gives 0.75 kg active ingredient per hectare) with a flat fan nozzle, then irrigate if you can."
+        },
+        {
+          "id": "weeding_no_herbicide_1",
+          "day": 20,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "First hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed now and again on day 35.",
+          "optional": true
+        },
+        {
+          "id": "hand_weeding",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding between day 30 and 35 after the weed spray."
+        },
+        {
+          "id": "wilt_prevention",
+          "day": 30,
+          "type": "disease_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Protect against wilt",
+          "detail": "Mix Pseudomonas fluorescens or Trichoderma asperellum 1 kg with 20 kg of well-rotted manure per acre and apply to the soil. Where plants wilt, drench the spot with carbendazim 1 g per litre."
+        },
+        {
+          "id": "weeding_no_herbicide_2",
+          "day": 35,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second hand weeding, if no herbicide was used",
+          "detail": "The second of two hand weedings when no weed spray was used.",
+          "optional": true
+        },
+        {
+          "id": "pod_borer_traps",
+          "day": 100,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Set pod borer traps and bird perches",
+          "detail": "Before flowering, set about 5 pheromone traps and 20 bird perches per acre. Birds pick off pod borer caterpillars."
+        },
+        {
+          "id": "pre_flowering_spray",
+          "day": 110,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Growth spray before flowering",
+          "detail": "Spray NAA 40 mg with salicylic acid 100 mg in each litre of water. Repeat 15 days later."
+        },
+        {
+          "id": "flowering_dap_spray",
+          "day": 125,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "DAP spray at flowering",
+          "detail": "Spray DAP 20 g (or urea 20 g) in each litre of water at flowering. Repeat 15 days later."
+        },
+        {
+          "id": "pre_flowering_spray_2",
+          "day": 125,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second growth spray",
+          "detail": "Spray NAA 40 mg with salicylic acid 100 mg in each litre of water again."
+        },
+        {
+          "id": "pod_borer_check_1",
+          "day": 135,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check pods for borers",
+          "detail": "Open some pods. Act only above these levels: 10% of pods damaged, 3 spotted pod borer larvae per plant, or 5 plume moth larvae per plant. Start with HaNPV or Bacillus thuringiensis while larvae are small; use chemical sprays only if damage keeps rising. Use products approved for pigeon pea and follow the label."
+        },
+        {
+          "id": "flowering_dap_spray_2",
+          "day": 140,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second DAP spray",
+          "detail": "Spray DAP 20 g (or urea 20 g) in each litre of water again."
+        },
+        {
+          "id": "pod_borer_check_2",
+          "day": 150,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check pods again",
+          "detail": "Check pods again against the same levels: 10% damaged pods is the level to act on."
+        },
+        {
+          "id": "harvest",
+          "day": 170,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Harvest",
+          "detail": "Cut whole plants when 80% of pods are mature. Heap them for 2-3 days, then dry and thresh. Short-duration varieties are ready at about 120-130 days.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Gram (Chana)": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 95,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 25
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative",
+          "fromDay": 26,
+          "toDay": 39
+        },
+        {
+          "id": "flowering_pods",
+          "name": "Flowering and pod filling",
+          "fromDay": 40,
+          "toDay": 80
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "fromDay": 81,
+          "toDay": 115
+        }
+      ],
+      "tasks": [
+        {
+          "id": "seed_treatment",
+          "day": -1,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Treat the seed a day before sowing",
+          "detail": "Treat seed with carbendazim or thiram 2 g per kg, or with Trichoderma viride 4 g per kg, a day before sowing. Then treat with Rhizobium and dry in shade for 15 minutes before sowing. Do not mix fungicide with the biocontrol or bacterial cultures. Use 30-36 kg of seed per acre."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser, the whole dose",
+          "detail": "Urea 11 kg, single superphosphate 63 kg and muriate of potash 8.5 kg per acre, all at sowing. Superphosphate also supplies sulphur; if you use a different phosphate, add gypsum."
+        },
+        {
+          "id": "wilt_prevention",
+          "day": 0,
+          "type": "disease_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Protect against wilt",
+          "detail": "Mix Pseudomonas fluorescens or Trichoderma asperellum 1 kg with 20 kg of well-rotted manure or sand per acre and apply to the soil at sowing."
+        },
+        {
+          "id": "sowing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Sow",
+          "detail": "Dibble seed at 30 cm between rows and 10 cm between plants."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On day 3, spray pendimethalin at the label dose (the guide gives 0.75 litre per hectare) with a flat fan nozzle."
+        },
+        {
+          "id": "weeding_no_herbicide_1",
+          "day": 15,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "First hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed now and again on day 30.",
+          "optional": true
+        },
+        {
+          "id": "hand_weeding",
+          "day": 25,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding between day 25 and 30 after the weed spray."
+        },
+        {
+          "id": "pod_borer_traps",
+          "day": 30,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Set pod borer traps and bird perches",
+          "detail": "Before flowering, set about 5 pheromone traps and 20 bird perches per acre, and pick off large caterpillars by hand."
+        },
+        {
+          "id": "weeding_no_herbicide_2",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second hand weeding, if no herbicide was used",
+          "detail": "The second of two hand weedings when no weed spray was used.",
+          "optional": true
+        },
+        {
+          "id": "pod_borer_check_1",
+          "day": 40,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check for gram pod borer",
+          "detail": "Act only above these levels: 2 young caterpillars or 5-8 eggs per plant, or aphids at 20 per 2.5 cm of shoot. Spray HaNPV or Bacillus thuringiensis while caterpillars are still small; if damage keeps rising, use a chemical spray approved for chickpea and follow the label."
+        },
+        {
+          "id": "pod_borer_check_2",
+          "day": 55,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check pods again",
+          "detail": "Check again against the same levels while pods are filling."
+        },
+        {
+          "id": "harvest",
+          "day": 90,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Harvest",
+          "detail": "Harvest when 70-80% of pods have turned creamy yellow.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Wheat": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 105,
+      "stages": [
+        {
+          "id": "germination",
+          "name": "Germination",
+          "fromDay": 0,
+          "toDay": 14,
+          "water": "Irrigate right after sowing. Do not let water stand while seeds germinate."
+        },
+        {
+          "id": "crown_root_tillering",
+          "name": "Crown root and tillering",
+          "fromDay": 15,
+          "toDay": 49,
+          "water": "Crown root initiation (day 15-20) is one of the two most critical irrigations; irrigate again at active tillering (day 35-40)."
+        },
+        {
+          "id": "flowering",
+          "name": "Flowering",
+          "fromDay": 50,
+          "toDay": 69,
+          "water": "Flowering (day 50-55) is the other most critical irrigation. Do not let the crop dry out now."
+        },
+        {
+          "id": "grain_filling",
+          "name": "Grain filling and maturity",
+          "fromDay": 70,
+          "toDay": 120,
+          "water": "Irrigate at grain filling (day 70-75), then stop as the grain hardens."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "farmyard_manure",
+          "day": -10,
+          "type": "manure",
+          "methods": [
+            "seed"
+          ],
+          "title": "Farmyard manure before ploughing",
+          "detail": "Spread farmyard manure or compost 5 tonnes per acre on the unploughed field and plough it in to a fine tilth."
+        },
+        {
+          "id": "seed_treatment",
+          "day": -1,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Treat the seed a day before sowing",
+          "detail": "Treat seed with carbendazim, thiram or carboxin at 2 g per kg. Use 40 kg of seed per acre."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Urea 35 kg, single superphosphate 101 kg and muriate of potash 27 kg per acre, placed in the sowing lines. Where zinc or sulphur is short, add zinc sulphate 15 kg per acre."
+        },
+        {
+          "id": "sowing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Sow and irrigate",
+          "detail": "Sow in lines 20 cm apart, 5 cm deep; do not sow deeper. Irrigate right away."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On day 3, spray a pre-emergence herbicide approved for wheat at the label dose (the guide names isoproturon at 500 g per hectare)."
+        },
+        {
+          "id": "crown_root_irrigation",
+          "day": 17,
+          "type": "irrigation",
+          "methods": [
+            "seed"
+          ],
+          "title": "Irrigate at crown root initiation",
+          "detail": "One of the two most critical irrigations. Irrigate between day 15 and 20."
+        },
+        {
+          "id": "top_dressing",
+          "day": 17,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Urea top dressing",
+          "detail": "Apply the remaining urea 35 kg per acre with the crown root irrigation."
+        },
+        {
+          "id": "weeding_no_herbicide_1",
+          "day": 20,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "First hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed now and again on day 35.",
+          "optional": true
+        },
+        {
+          "id": "hand_weeding",
+          "day": 35,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding on day 35."
+        },
+        {
+          "id": "tillering_irrigation",
+          "day": 37,
+          "type": "irrigation",
+          "methods": [
+            "seed"
+          ],
+          "title": "Irrigate at active tillering",
+          "detail": "Irrigate between day 35 and 40."
+        },
+        {
+          "id": "flowering_irrigation",
+          "day": 52,
+          "type": "irrigation",
+          "methods": [
+            "seed"
+          ],
+          "title": "Irrigate at flowering",
+          "detail": "The other most critical irrigation. Irrigate between day 50 and 55."
+        },
+        {
+          "id": "grain_filling_irrigation",
+          "day": 72,
+          "type": "irrigation",
+          "methods": [
+            "seed"
+          ],
+          "title": "Irrigate at grain filling",
+          "detail": "Irrigate between day 70 and 75."
+        },
+        {
+          "id": "harvest",
+          "day": 100,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Harvest",
+          "detail": "Harvest when the grain is hard and the straw is dry and brittle, then thresh and winnow.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Groundnut": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 105,
+      "stages": [
+        {
+          "id": "pre_flowering",
+          "name": "Pre-flowering",
+          "fromDay": 0,
+          "toDay": 25,
+          "water": "Irrigate at sowing, give a life irrigation on day 4-5, and irrigate again around day 20."
+        },
+        {
+          "id": "flowering_pegging",
+          "name": "Flowering and pegging",
+          "fromDay": 26,
+          "toDay": 60,
+          "water": "Critical: give two irrigations at flowering and one or two at pegging. The soil must stay moist for pegs to enter it."
+        },
+        {
+          "id": "pod_development",
+          "name": "Pod development and maturity",
+          "fromDay": 61,
+          "toDay": 115,
+          "water": "Give 2-3 irrigations while pods fill, depending on soil. If the soil is dry at harvest, irrigate first so plants pull out easily."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "farmyard_manure",
+          "day": -7,
+          "type": "manure",
+          "methods": [
+            "seed"
+          ],
+          "title": "Farmyard manure before ploughing",
+          "detail": "Spread farmyard manure or composted coir pith 5 tonnes per acre and plough it in."
+        },
+        {
+          "id": "seed_treatment",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Treat the seed",
+          "detail": "Treat kernels with biocontrol agents first, then with Rhizobium, just before sowing. Use 49 kg of kernels per acre, or 71 kg for bold-seeded varieties."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Irrigated: urea 22 kg, single superphosphate 126 kg and muriate of potash 51 kg per acre. Rainfed: urea 9 kg, superphosphate 25 kg and potash 30 kg per acre. Where zinc is short, add zinc sulphate 10 kg per acre."
+        },
+        {
+          "id": "sowing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Sow",
+          "detail": "Sow at 30 cm between rows and 10 cm between plants. Where bud necrosis (ring mosaic) is common, use 15 x 15 cm."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On moist soil, spray pendimethalin at the label dose (the guide gives 1 litre per hectare) with a flat fan nozzle."
+        },
+        {
+          "id": "weeding_no_herbicide",
+          "day": 20,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "First hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed now and again around day 40.",
+          "optional": true
+        },
+        {
+          "id": "nutrient_spray_1",
+          "day": 25,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Nutrient spray for pod filling",
+          "detail": "Soak DAP 1 kg, ammonium sulphate 400 g and borax 200 g overnight in 15 litres of water, filter, then make up to 200 litres and spray over an acre. Repeat on day 35."
+        },
+        {
+          "id": "leaf_pest_check_1",
+          "day": 30,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check for leaf miner and caterpillars",
+          "detail": "Act only above these levels: leaf miner 1 larva per metre of row, or tobacco caterpillar 8 egg masses per 100 m of row. Castor on the borders shows caterpillars early. Pick egg masses and young larvae by hand; neem seed kernel extract 5% or NPV sprays work on young larvae. Use products approved for groundnut and follow the label."
+        },
+        {
+          "id": "nutrient_spray_2",
+          "day": 35,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second nutrient spray",
+          "detail": "Spray the same DAP, ammonium sulphate and borax mix again."
+        },
+        {
+          "id": "weeding_earthing_up",
+          "day": 40,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Hand weeding and earthing up",
+          "detail": "Hand-weed and earth up the rows so pegs can enter loose soil. After day 45, do not disturb the soil: it damages pod formation."
+        },
+        {
+          "id": "gypsum",
+          "day": 45,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Gypsum for pod filling",
+          "detail": "Apply gypsum 162 kg per acre beside the plants, hoe it in lightly and earth up. Gypsum gives calcium and sulphur for well-filled pods. Skip it on calcareous (chalky) soil."
+        },
+        {
+          "id": "leaf_pest_check_2",
+          "day": 60,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check leaves again",
+          "detail": "Check again for leaf miner and tobacco caterpillar against the same levels."
+        },
+        {
+          "id": "harvest",
+          "day": 100,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check maturity and harvest",
+          "detail": "Yellowing top leaves and dropping older leaves show maturity. Pull a few plants and shell the pods: a brownish-black inner shell means ready. Dry pods in the sun for 4-5 days.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Sunflower": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 90,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 30,
+          "water": "Irrigate right after sowing, again on day 4-5, then every 7-8 days depending on soil and weather."
+        },
+        {
+          "id": "bud_flowering",
+          "name": "Bud and flowering",
+          "fromDay": 31,
+          "toDay": 65,
+          "water": "Irrigate every 7-8 days; flowering is a key time not to let the crop dry out."
+        },
+        {
+          "id": "seed_filling",
+          "name": "Seed filling and maturity",
+          "fromDay": 66,
+          "toDay": 100,
+          "water": "Keep irrigating every 7-8 days while seeds fill, then stop as the heads mature."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "seed_treatment",
+          "day": -1,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Treat the seed a day before sowing",
+          "detail": "Treat seed with carbendazim or thiram 2 g per kg, then with Azospirillum and phosphobacteria. Or use Trichoderma 4 g per kg just before sowing, but then no fungicide. Hybrids need 2 kg of seed per acre."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "The guide gives one blanket dose, applied at sowing. Irrigated hybrids: urea 53 kg, single superphosphate 228 kg and muriate of potash 41 kg per acre. Irrigated varieties: urea 53 kg, superphosphate 76 kg and potash 20 kg. Where boron is short, add borax 4 kg per acre."
+        },
+        {
+          "id": "sowing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed"
+          ],
+          "title": "Sow on ridges",
+          "detail": "Sow on ridges 60 cm apart and irrigate."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On day 3, spray pendimethalin at the label dose (the guide gives 1 litre per hectare), then irrigate."
+        },
+        {
+          "id": "thinning",
+          "day": 10,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Thin seedlings",
+          "detail": "Leave one healthy, vigorous seedling in each hole."
+        },
+        {
+          "id": "weeding_no_herbicide",
+          "day": 15,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "First hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed now and again on day 30.",
+          "optional": true
+        },
+        {
+          "id": "naa_spray_1",
+          "day": 30,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "NAA spray",
+          "detail": "Spray NAA at 20 ppm with good coverage of the whole plant. Do not use brackish water. Repeat on day 60."
+        },
+        {
+          "id": "hand_weeding",
+          "day": 32,
+          "type": "weeding",
+          "methods": [
+            "seed"
+          ],
+          "title": "Hand weeding",
+          "detail": "One late hand weeding between day 30 and 35."
+        },
+        {
+          "id": "boric_acid_spray",
+          "day": 45,
+          "type": "fertilizer",
+          "methods": [
+            "seed"
+          ],
+          "title": "Boric acid on the flower heads",
+          "detail": "When the outer (ray) petals open, spray boric acid 2 g per litre of water onto the heads. It improves seed set and filling."
+        },
+        {
+          "id": "hand_pollination",
+          "day": 50,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Help pollination",
+          "detail": "At mid-flowering (day 45-48 for short-duration, 58-60 for long-duration varieties), gently rub the heads with a hand covered in soft cloth, or rub two heads face to face. Do it between 9 and 11 in the morning."
+        },
+        {
+          "id": "naa_spray_2",
+          "day": 60,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Second NAA spray",
+          "detail": "Spray NAA at 20 ppm again."
+        },
+        {
+          "id": "bird_scaring",
+          "day": 70,
+          "type": "care",
+          "methods": [
+            "seed"
+          ],
+          "title": "Keep birds off the heads",
+          "detail": "As seeds fill, tie reflective ribbons across the field to scare birds."
+        },
+        {
+          "id": "harvest",
+          "day": 88,
+          "type": "harvest",
+          "methods": [
+            "seed"
+          ],
+          "title": "Harvest",
+          "detail": "When the bracts on the back of the heads turn lemon yellow and the heads harden, cut the heads only. Dry them in the sun for 3 days, turning every 3 hours, then thresh.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Jowar (Sorghum)": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        },
+        {
+          "id": "seedlings",
+          "seedlingAgeDays": 18
+        }
+      ],
+      "harvestAgeDays": 95,
+      "stages": [
+        {
+          "id": "growth",
+          "name": "Growth",
+          "fromDay": 0,
+          "toDay": 33,
+          "water": "Irrigate at sowing or planting and again on day 4 for establishment, then around day 15 and 28."
+        },
+        {
+          "id": "flowering",
+          "name": "Flowering",
+          "fromDay": 34,
+          "toDay": 65,
+          "water": "Irrigate copiously: around day 40, 52 and 64 on light soil."
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "fromDay": 66,
+          "toDay": 105,
+          "water": "Control irrigation: one more around day 65, then stop."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Urea 40 kg, single superphosphate 114 kg and muriate of potash 30 kg per acre before sowing or planting. Where sulphur is short, add gypsum. Seed needed: 4 kg per acre direct-sown, or 3 kg per acre for a transplanted nursery."
+        },
+        {
+          "id": "spacing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Sow or transplant",
+          "detail": "Space rows 45 cm apart with plants 15 cm apart. Transplant nursery seedlings at 15-18 days old; older seedlings establish poorly."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "Between day 3 and 5, spray atrazine at the label dose (the guide gives 0.25 kg per hectare). If a pulse is intercropped, use pendimethalin instead: atrazine harms pulses."
+        },
+        {
+          "id": "shoot_fly_check",
+          "day": 7,
+          "type": "pest_watch",
+          "methods": [
+            "seed"
+          ],
+          "title": "Check for shoot fly",
+          "detail": "In the first two weeks, look for small white eggs under the leaves and dead central shoots. Act only if 10% of plants carry an egg or show a dead heart. Early sowing after the monsoon arrives reduces shoot fly. Use products approved for sorghum and follow the label."
+        },
+        {
+          "id": "top_dressing_1",
+          "day": 15,
+          "type": "fertilizer",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "First urea top dressing",
+          "detail": "Urea 20 kg per acre, then irrigate."
+        },
+        {
+          "id": "post_emergence_herbicide",
+          "day": 22,
+          "type": "weeding",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Post-emergence weed spray (transplanted crop)",
+          "detail": "In a transplanted crop, spray 2,4-D at the label dose between day 20 and 25 to control broad-leaved weeds.",
+          "optional": true
+        },
+        {
+          "id": "top_dressing_2",
+          "day": 30,
+          "type": "fertilizer",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Second urea top dressing",
+          "detail": "Urea 20 kg per acre, then irrigate."
+        },
+        {
+          "id": "stem_borer_check",
+          "day": 30,
+          "type": "pest_watch",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Check for stem borer",
+          "detail": "Look for dead hearts and holes in stems. Act only above 10% damage. Use products approved for sorghum and follow the label."
+        },
+        {
+          "id": "hand_weeding_thinning",
+          "day": 32,
+          "type": "weeding",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Hand weeding and thinning",
+          "detail": "Hand-weed between day 30 and 35. In a direct-sown crop, thin plants to 15 cm apart, using the thinned seedlings to fill gaps."
+        },
+        {
+          "id": "earhead_pest_check",
+          "day": 50,
+          "type": "pest_watch",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Check the earheads",
+          "detail": "At flowering, check earheads. Act only above these levels: grain midge 5, earhead bug 10, or earhead caterpillar 2 per earhead. Light traps until midnight help monitor them. Use products approved for sorghum and follow the label."
+        },
+        {
+          "id": "harvest",
+          "day": 95,
+          "type": "harvest",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Harvest",
+          "detail": "Harvest when the grains turn yellow."
+        }
+      ]
+    },
+    "Ragi (Finger millet)": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seedlings",
+          "seedlingAgeDays": 18
+        },
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 105,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 7,
+          "water": "Irrigate at planting and again on day 5."
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative",
+          "fromDay": 8,
+          "toDay": 20,
+          "water": "Irrigate around day 15-20 depending on soil. Let pulled weeds dry for 2-3 days before irrigating."
+        },
+        {
+          "id": "flowering",
+          "name": "Flowering",
+          "fromDay": 21,
+          "toDay": 55,
+          "water": "Irrigate around day 26-33, then around day 36-45 and day 51-54 on heavier soils."
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "fromDay": 56,
+          "toDay": 120,
+          "water": "One or two more irrigations around day 58-85 depending on soil, then stop."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Urea 26 kg, single superphosphate 76 kg and muriate of potash 20 kg per acre before planting or sowing. Where zinc is short, add zinc sulphate 10 kg per acre."
+        },
+        {
+          "id": "spacing",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Transplant or sow",
+          "detail": "Transplant 18-20 day old seedlings at 30 x 10 cm, dipping the roots in Azospirillum solution for 15-30 minutes first. Direct-sown ragi is spaced 22.5 x 10 cm."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On moist soil on day 3, spray oxyfluorfen at the label dose (the guide gives 0.05 kg per hectare) with a flat fan nozzle."
+        },
+        {
+          "id": "weeding_no_herbicide_1",
+          "day": 10,
+          "type": "weeding",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "First hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed now and again on day 20. Let weeds dry for 2-3 days before irrigating.",
+          "optional": true
+        },
+        {
+          "id": "hand_weeding",
+          "day": 20,
+          "type": "weeding",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding on day 20 after the weed spray."
+        },
+        {
+          "id": "top_dressing_1",
+          "day": 27,
+          "type": "fertilizer",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "First urea top dressing",
+          "detail": "Urea 13 kg per acre between day 25 and 30, then irrigate."
+        },
+        {
+          "id": "top_dressing_2",
+          "day": 42,
+          "type": "fertilizer",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Second urea top dressing",
+          "detail": "Urea 13 kg per acre between day 40 and 45, then irrigate."
+        },
+        {
+          "id": "first_harvest",
+          "day": 95,
+          "type": "harvest",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "First harvest",
+          "detail": "Ragi does not ripen evenly. When the earhead on the main shoot and half of all earheads turn brown, cut the brown earheads."
+        },
+        {
+          "id": "second_harvest",
+          "day": 102,
+          "type": "harvest",
+          "methods": [
+            "seed",
+            "seedlings"
+          ],
+          "title": "Second harvest",
+          "detail": "Seven days after the first harvest, cut all remaining earheads, green ones included. Heap them in shade for a day to cure, then dry and thresh."
+        }
+      ]
+    },
+    "Rice (Paddy)": {
+      "sources": [
+        {
+          "title": "TNAU and Directorate of Agriculture, Tamil Nadu: Crop Production Guide 2020 (Agriculture)",
+          "url": "https://agritech.tnau.ac.in/pdf/AGRICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seedlings",
+          "seedlingAgeDays": 25
+        },
+        {
+          "id": "seed",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 135,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 7,
+          "water": "Keep a shallow 2 cm of water for the first week; deep water makes planting too deep and cuts tillering."
+        },
+        {
+          "id": "tillering",
+          "name": "Tillering",
+          "fromDay": 8,
+          "toDay": 45,
+          "water": "Flood to 5 cm, let it disappear, then irrigate again: 1 day after on loamy soil in summer (3 days in winter), or as soon as it disappears on clay soil."
+        },
+        {
+          "id": "reproductive",
+          "name": "Panicle initiation to flowering",
+          "fromDay": 46,
+          "toDay": 85,
+          "water": "Critical: never let the soil dry below saturation now. Avoid keeping more than 5 cm standing continuously at booting."
+        },
+        {
+          "id": "maturity",
+          "name": "Grain filling and maturity",
+          "fromDay": 86,
+          "toDay": 120,
+          "water": "Keep the same 5 cm cycles, then drain the field 7-10 days before harvest."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Basal fertiliser at the last puddling",
+          "detail": "For medium- and long-duration varieties: single superphosphate 127 kg, urea 33 kg and muriate of potash 8.5 kg per acre, worked in at the last puddling. Where zinc is short, add zinc sulphate 10 kg per acre."
+        },
+        {
+          "id": "transplanting",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Transplant",
+          "detail": "Plant 2 seedlings per hill at 20 x 15 cm, shallow (about 3 cm). Deeper planting delays establishment and gives fewer tillers. Keep 2 cm of water."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Pre-emergence weed control",
+          "detail": "On day 3, apply a pre-emergence rice herbicide at the label dose (the guide names pretilachlor, butachlor or pyrazosulfuron-ethyl) over a thin film of water. Do not drain or add water for the next 2 days."
+        },
+        {
+          "id": "gap_filling",
+          "day": 8,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Fill gaps",
+          "detail": "Replant missing hills between day 7 and 10."
+        },
+        {
+          "id": "weeding_no_herbicide",
+          "day": 15,
+          "type": "weeding",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Hand weeding, if no herbicide was used",
+          "detail": "Without a weed spray, hand-weed on day 15. A rotary weeder can be run every 10 days from day 15 if rows are 20 cm apart.",
+          "optional": true
+        },
+        {
+          "id": "stem_borer_check",
+          "day": 30,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Check for stem borer and leaf folder",
+          "detail": "Act only above these levels: stem borer 2 egg masses per square metre or 10% dead hearts; leaf folder 10% of leaves damaged; gall midge 10% silver shoots. Use products approved for rice and follow the label."
+        },
+        {
+          "id": "trichogramma",
+          "day": 37,
+          "type": "pest_control",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Release Trichogramma against stem borer",
+          "detail": "When stem borer moths are active, release the egg parasitoid Trichogramma japonicum, 40,000 per acre, three times a week apart from day 37.",
+          "optional": true
+        },
+        {
+          "id": "hand_weeding",
+          "day": 40,
+          "type": "weeding",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding between day 35 and 45 after the herbicide."
+        },
+        {
+          "id": "top_dressing_tillering",
+          "day": 52,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Top dressing at active tillering",
+          "detail": "Urea 33 kg and muriate of potash 8.5 kg per acre, then keep water in the field.",
+          "basis": "age"
+        },
+        {
+          "id": "planthopper_check",
+          "day": 60,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Check for brown planthopper",
+          "detail": "Tap the base of a few hills over water. Act only above 1 hopper per tiller, or 2 per tiller if spiders are present (about 1 per hill). Spiders are allies; avoid spraying when they are enough. Use products approved for rice and follow the label.",
+          "basis": "age"
+        },
+        {
+          "id": "top_dressing_panicle",
+          "day": 72,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Top dressing at panicle initiation",
+          "detail": "Urea 33 kg and muriate of potash 8.5 kg per acre, then keep water in the field. This split and the tillering split matter most; do not cut them.",
+          "basis": "age"
+        },
+        {
+          "id": "top_dressing_heading",
+          "day": 102,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Top dressing at heading",
+          "detail": "Urea 33 kg and muriate of potash 8.5 kg per acre, then keep water in the field.",
+          "basis": "age"
+        },
+        {
+          "id": "flowering_pest_check",
+          "day": 105,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Check earheads and flag leaves",
+          "detail": "At flowering, act only above these levels: earhead bug 5 per 100 earheads, leaf folder damage on 5% of flag leaves, or stem borer white ears on 2% of tillers. Use products approved for rice and follow the label.",
+          "basis": "age"
+        },
+        {
+          "id": "drain_field",
+          "day": 125,
+          "type": "irrigation",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Drain the field",
+          "detail": "Drain the water 7-10 days before the expected harvest. It hastens maturity and makes harvesting easier.",
+          "basis": "age"
+        },
+        {
+          "id": "harvest",
+          "day": 135,
+          "type": "harvest",
+          "methods": [
+            "seedlings",
+            "seed"
+          ],
+          "title": "Harvest",
+          "detail": "When 80% of panicles are straw-coloured, dehusk a few grains from the most mature tiller: clear, firm rice means ready. Harvest, thresh and dry the grain to 12% moisture before storing.",
+          "basis": "age"
+        }
+      ]
+    },
+    "Tomato": {
+      "sources": [
+        {
+          "title": "TNAU and Department of Horticulture, Tamil Nadu: Crop Production Guide 2020 (Horticulture)",
+          "url": "https://agritech.tnau.ac.in/pdf/HORTICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seedlings",
+          "seedlingAgeDays": 25
+        }
+      ],
+      "harvestAgeDays": 140,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 10,
+          "water": "Irrigate the furrows before planting and give a life irrigation on day 3."
+        },
+        {
+          "id": "flowering",
+          "name": "Vegetative growth and flowering",
+          "fromDay": 11,
+          "toDay": 40,
+          "water": "Irrigate once a week."
+        },
+        {
+          "id": "fruit_set",
+          "name": "Fruit set",
+          "fromDay": 41,
+          "toDay": 70,
+          "water": "Irrigate once a week; uneven watering now causes fruit cracking."
+        },
+        {
+          "id": "picking",
+          "name": "Picking",
+          "fromDay": 71,
+          "toDay": 120,
+          "water": "Keep irrigating once a week through the picking period."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "farmyard_manure",
+          "day": -7,
+          "type": "manure",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Farmyard manure and biofertilisers",
+          "detail": "Plough in farmyard manure 10 tonnes per acre. Form ridges 60 cm apart. Mix Azospirillum and phosphobacteria, 800 g each, with 20 kg of manure and apply per acre."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Varieties: urea 66 kg, single superphosphate 253 kg and muriate of potash 34 kg per acre. Hybrids: urea 44 kg, superphosphate 632 kg and potash 67 kg, plus borax 4 kg, zinc sulphate 20 kg and copper sulphate 1.5 kg per acre."
+        },
+        {
+          "id": "transplanting",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Transplant 25-day seedlings",
+          "detail": "Irrigate the furrows and plant 25-day-old seedlings on the sides of the ridges. Dip the roots in Pseudomonas fluorescens 5 g per litre first to protect against wilt. For fruit borer, plant a row of 40-day-old tall marigold for every 16 rows of tomato."
+        },
+        {
+          "id": "life_irrigation",
+          "day": 3,
+          "type": "irrigation",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Life irrigation",
+          "detail": "Give a life irrigation on day 3."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On moist soil, spray pendimethalin at the label dose (the guide gives 1.0 kg active ingredient per hectare)."
+        },
+        {
+          "id": "gap_filling",
+          "day": 7,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Fill gaps",
+          "detail": "Replace dead seedlings on day 7."
+        },
+        {
+          "id": "vector_check",
+          "day": 20,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Check for leaf curl and spotted wilt",
+          "detail": "Pull out and destroy plants with curled, yellow or bronzed leaves up to day 45. Remove the weed Abutilon (thuthi), which hosts whitefly. Whiteflies and thrips spread these viruses; if they build up, ask your agriculture officer before spraying. Use products approved for tomato and follow the label."
+        },
+        {
+          "id": "hand_weeding",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding on day 30."
+        },
+        {
+          "id": "top_dressing_1",
+          "day": 30,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "First top dressing",
+          "detail": "Varieties: urea 66 kg per acre, applied during earthing up; that is their last dose. Hybrids: urea 44 kg and muriate of potash 34 kg per acre."
+        },
+        {
+          "id": "staking",
+          "day": 30,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Stake the plants",
+          "detail": "Stake plants with 1-1.5 m tall stakes."
+        },
+        {
+          "id": "wilt_prevention",
+          "day": 30,
+          "type": "disease_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Protect against wilt",
+          "detail": "Mix Pseudomonas fluorescens 1 kg with 20 kg of farmyard manure per acre and apply to the soil."
+        },
+        {
+          "id": "fruit_borer_check",
+          "day": 40,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Check for fruit borer",
+          "detail": "From flower initiation, check weekly for holes in fruits. Collect and destroy damaged fruits and large caterpillars. Spray HaNPV or azadirachtin 1% at 2 ml per litre if damage continues. Use products approved for tomato and follow the label."
+        },
+        {
+          "id": "top_dressing_2",
+          "day": 45,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Second top dressing (hybrids)",
+          "detail": "Hybrids: urea 44 kg and muriate of potash 34 kg per acre.",
+          "optional": true
+        },
+        {
+          "id": "boric_acid_spray",
+          "day": 45,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Boric acid at flowering",
+          "detail": "Spray boric acid 3 g per litre of water at flowering, and again 10 days later."
+        },
+        {
+          "id": "top_dressing_3",
+          "day": 60,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Third top dressing (hybrids)",
+          "detail": "Hybrids: urea 44 kg and muriate of potash 34 kg per acre.",
+          "optional": true
+        },
+        {
+          "id": "nutrient_spray",
+          "day": 60,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Nutrient spray",
+          "detail": "Spray 19:19:19 fertiliser with manganese at 1% (10 g per litre)."
+        },
+        {
+          "id": "first_picking",
+          "day": 70,
+          "type": "harvest",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "First picking",
+          "detail": "Picking starts around day 70 after transplanting, going by the guide's fertigation schedule, and continues for about 80 days. Pick fruits as they colour; the crop lasts 110-115 days from transplanting."
+        }
+      ]
+    },
+    "Chilli": {
+      "sources": [
+        {
+          "title": "TNAU and Department of Horticulture, Tamil Nadu: Crop Production Guide 2020 (Horticulture)",
+          "url": "https://agritech.tnau.ac.in/pdf/HORTICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seedlings",
+          "seedlingAgeDays": 40
+        }
+      ],
+      "harvestAgeDays": 190,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 10,
+          "water": "Irrigate the furrows before planting, then once a week."
+        },
+        {
+          "id": "flowering",
+          "name": "Growth and flowering",
+          "fromDay": 11,
+          "toDay": 40,
+          "water": "Irrigate once a week."
+        },
+        {
+          "id": "fruit_set",
+          "name": "Fruit set",
+          "fromDay": 41,
+          "toDay": 70,
+          "water": "Irrigate once a week; stress now makes flowers and fruits drop."
+        },
+        {
+          "id": "picking",
+          "name": "Picking",
+          "fromDay": 71,
+          "toDay": 150,
+          "water": "Keep irrigating once a week through the picking period."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "farmyard_manure",
+          "day": -7,
+          "type": "manure",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Farmyard manure and biofertilisers",
+          "detail": "Plough in farmyard manure 10 tonnes per acre for varieties, 12 tonnes for hybrids. Form ridges 60 cm apart. Mix Azospirillum and phosphobacteria, 800 g each, with 8 kg of manure and apply per acre."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Varieties: urea 26 kg, single superphosphate 152 kg and muriate of potash 20 kg per acre. Hybrids: urea 26 kg, superphosphate 202 kg and potash 54 kg per acre."
+        },
+        {
+          "id": "transplanting",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Transplant 40-45 day seedlings",
+          "detail": "Irrigate the furrows and plant 40-45 day old seedlings on the ridges."
+        },
+        {
+          "id": "pre_emergence_herbicide",
+          "day": 3,
+          "type": "weeding",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Pre-emergence weed spray",
+          "detail": "On moist soil, spray pendimethalin at the label dose (the guide gives 1.0 kg active ingredient per hectare)."
+        },
+        {
+          "id": "gap_filling",
+          "day": 7,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Fill gaps",
+          "detail": "Replace dead seedlings on day 7."
+        },
+        {
+          "id": "triacontanol_spray",
+          "day": 20,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Growth spray",
+          "detail": "Spray triacontanol at 1.25 ml per litre. Repeat on day 40, 60 and 80.",
+          "optional": true
+        },
+        {
+          "id": "thrips_mite_check",
+          "day": 25,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Check for thrips and mites",
+          "detail": "Look for upward-curled leaves (thrips) and downward-curled, narrow leaves (yellow mite). Agathi grown as an intercrop helps against thrips. Use products approved for chilli and follow the label."
+        },
+        {
+          "id": "hand_weeding",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Hand weeding",
+          "detail": "One hand weeding on day 30."
+        },
+        {
+          "id": "top_dressing_1",
+          "day": 30,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "First urea top dressing",
+          "detail": "Varieties: urea 9 kg per acre. Hybrids: urea 26 kg per acre."
+        },
+        {
+          "id": "earthing_up",
+          "day": 45,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Earth up",
+          "detail": "Earth up the plants, weeding at the same time."
+        },
+        {
+          "id": "top_dressing_2",
+          "day": 60,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Second urea top dressing",
+          "detail": "Varieties: urea 9 kg per acre. Hybrids: urea 26 kg per acre."
+        },
+        {
+          "id": "naa_spray_1",
+          "day": 60,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "NAA spray for fruit set",
+          "detail": "Spray NAA 10 ppm (10 mg per litre of water) to improve fruit set. Repeat on day 90."
+        },
+        {
+          "id": "nutrient_spray",
+          "day": 60,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Nutrient spray",
+          "detail": "Spray 19:19:19 fertiliser with manganese at 1% (10 g per litre)."
+        },
+        {
+          "id": "fruit_borer_check",
+          "day": 60,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Check for fruit borer",
+          "detail": "Collect and destroy damaged fruits and large caterpillars. Spray Bacillus thuringiensis 2 g per litre if damage continues. Use products approved for chilli and follow the label."
+        },
+        {
+          "id": "fruit_rot_watch",
+          "day": 70,
+          "type": "disease_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Watch for die-back and fruit rot",
+          "detail": "If twigs dry from the tip or fruits rot, spray mancozeb 2 g or copper oxychloride 2.5 g per litre, three times at 15-day intervals. Use products approved for chilli and follow the label."
+        },
+        {
+          "id": "first_picking",
+          "day": 70,
+          "type": "harvest",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "First picking",
+          "detail": "Picking starts around day 70 after transplanting, going by the guide's fertigation schedule, and continues for about 80 days. Pick green or red as your market wants."
+        },
+        {
+          "id": "top_dressing_3",
+          "day": 90,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Third urea top dressing",
+          "detail": "Varieties: urea 9 kg per acre. Hybrids: urea 26 kg per acre."
+        },
+        {
+          "id": "naa_spray_2",
+          "day": 90,
+          "type": "care",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Second NAA spray",
+          "detail": "Spray NAA 10 ppm again."
+        }
+      ]
+    },
+    "Onion": {
+      "sources": [
+        {
+          "title": "TNAU and Department of Horticulture, Tamil Nadu: Crop Production Guide 2020 (Horticulture)",
+          "url": "https://agritech.tnau.ac.in/pdf/HORTICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "seedlings",
+          "seedlingAgeDays": 45
+        }
+      ],
+      "harvestAgeDays": 145,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Establishment",
+          "fromDay": 0,
+          "toDay": 10,
+          "water": "Irrigate at planting and on day 3, then once a week."
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative",
+          "fromDay": 11,
+          "toDay": 35,
+          "water": "Irrigate once a week."
+        },
+        {
+          "id": "bulb_formation",
+          "name": "Bulb formation",
+          "fromDay": 36,
+          "toDay": 60,
+          "water": "Irrigate once a week and keep moisture even while bulbs form."
+        },
+        {
+          "id": "bulb_development",
+          "name": "Bulb development and maturity",
+          "fromDay": 61,
+          "toDay": 110,
+          "water": "Irrigate once a week, then stop 15 days before harvest."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "farmyard_manure",
+          "day": -7,
+          "type": "manure",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Manure, zinc and copper at the last ploughing",
+          "detail": "Plough in farmyard manure 10 tonnes per acre with zinc sulphate 20 kg. Mix copper sulphate 4 kg into 40 kg of manure and apply. Form ridges 45 cm apart."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Basal fertiliser",
+          "detail": "Urea 44 kg, single superphosphate 379 kg and muriate of potash 51 kg per acre, with Azospirillum and phosphobacteria 800 g each."
+        },
+        {
+          "id": "transplanting",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Transplant 45-day seedlings",
+          "detail": "Plant 45-day-old seedlings 10 cm apart on both sides of the ridges, then irrigate. Two rows of maize around the field act as a barrier against thrips."
+        },
+        {
+          "id": "life_irrigation",
+          "day": 3,
+          "type": "irrigation",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Irrigate on day 3",
+          "detail": "Give the second irrigation on day 3."
+        },
+        {
+          "id": "sticky_traps",
+          "day": 10,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Set yellow sticky traps",
+          "detail": "Set about 5 yellow sticky traps per acre to catch thrips and leaf miner early."
+        },
+        {
+          "id": "thrips_check",
+          "day": 20,
+          "type": "pest_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Check for thrips",
+          "detail": "Look for silvery streaks and tiny insects in the leaf folds. Regular hoeing and flooding the field keep thrips down; spray only if they keep spreading. Use products approved for onion and follow the label."
+        },
+        {
+          "id": "first_weeding",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "First weeding",
+          "detail": "Hand-weed, then weed again as needed."
+        },
+        {
+          "id": "top_dressing",
+          "day": 30,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Urea top dressing",
+          "detail": "Urea 44 kg per acre, then irrigate."
+        },
+        {
+          "id": "copper_spray_1",
+          "day": 30,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Copper spray",
+          "detail": "Spray copper sulphate 2 g per litre of water. Repeat 10 days later."
+        },
+        {
+          "id": "copper_spray_2",
+          "day": 40,
+          "type": "fertilizer",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Second copper spray",
+          "detail": "Spray copper sulphate 2 g per litre of water again."
+        },
+        {
+          "id": "purple_blotch_watch",
+          "day": 45,
+          "type": "disease_watch",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Watch for purple blotch",
+          "detail": "If purple, sunken spots appear on leaves, spray mancozeb 2 g or copper oxychloride 2.5 g per litre, adding a sticker (0.5 ml per litre). Use products approved for onion and follow the label."
+        },
+        {
+          "id": "stop_irrigation",
+          "day": 85,
+          "type": "irrigation",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Stop irrigating",
+          "detail": "Stop irrigation about 15 days before harvest. A maleic hydrazide spray now reduces sprouting in storage."
+        },
+        {
+          "id": "harvest",
+          "day": 100,
+          "type": "harvest",
+          "methods": [
+            "seedlings"
+          ],
+          "title": "Harvest and cure",
+          "detail": "Harvest one week after half the tops have fallen over. Cure the bulbs with their tops in shade for 10-15 days before storing, then sort and grade."
+        }
+      ]
+    },
+    "Potato": {
+      "sources": [
+        {
+          "title": "TNAU and Department of Horticulture, Tamil Nadu: Crop Production Guide 2020 (Horticulture)",
+          "url": "https://agritech.tnau.ac.in/pdf/HORTICULTURE.pdf"
+        }
+      ],
+      "methods": [
+        {
+          "id": "tubers",
+          "seedlingAgeDays": 0
+        }
+      ],
+      "harvestAgeDays": 120,
+      "stages": [
+        {
+          "id": "establishment",
+          "name": "Sprouting and establishment",
+          "fromDay": 0,
+          "toDay": 30,
+          "water": "First irrigation 10 days after planting, then once a week."
+        },
+        {
+          "id": "vegetative",
+          "name": "Vegetative growth",
+          "fromDay": 31,
+          "toDay": 60,
+          "water": "Irrigate once a week. Keep the field weed-free until day 60: weeds hurt most now."
+        },
+        {
+          "id": "tuber_bulking",
+          "name": "Tuber bulking",
+          "fromDay": 61,
+          "toDay": 100,
+          "water": "Irrigate once a week."
+        },
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "fromDay": 101,
+          "toDay": 130,
+          "water": "Reduce irrigation as the crop matures."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "farmyard_manure",
+          "day": -7,
+          "type": "manure",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Farmyard manure",
+          "detail": "Plough in farmyard manure 6 tonnes per acre. Form ridges 45 cm apart."
+        },
+        {
+          "id": "basal_fertilizer",
+          "day": 0,
+          "type": "fertilizer",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Basal fertiliser, half the dose",
+          "detail": "Urea 53 kg, single superphosphate 304 kg and muriate of potash 40 kg per acre, plus magnesium sulphate 24 kg, zinc sulphate 10 kg and sulphur 30 kg. Add Azospirillum and phosphobacteria 800 g each."
+        },
+        {
+          "id": "planting",
+          "day": 0,
+          "type": "seed",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Plant seed tubers",
+          "detail": "Plant healthy, well-sprouted 40-50 g seed tubers (about 1.3 tonnes per acre) 20 cm apart and 15 cm deep, which keeps tuber moth from laying eggs on them."
+        },
+        {
+          "id": "tuber_moth_traps",
+          "day": 0,
+          "type": "pest_watch",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Set tuber moth traps",
+          "detail": "Set about 5 pheromone traps per acre."
+        },
+        {
+          "id": "first_irrigation",
+          "day": 10,
+          "type": "irrigation",
+          "methods": [
+            "tubers"
+          ],
+          "title": "First irrigation",
+          "detail": "Irrigate 10 days after planting, then once a week."
+        },
+        {
+          "id": "cutworm_check",
+          "day": 15,
+          "type": "pest_watch",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Check for cutworms",
+          "detail": "Look for young plants cut at the base. Running sprinklers in the daytime brings hidden larvae up for birds. Collect large caterpillars; spray neem seed kernel extract 5% or Bacillus thuringiensis 2 g per litre. Use products approved for potato and follow the label."
+        },
+        {
+          "id": "top_dressing",
+          "day": 30,
+          "type": "fertilizer",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Top dressing, the other half",
+          "detail": "Urea 53 kg, single superphosphate 304 kg and muriate of potash 40 kg per acre."
+        },
+        {
+          "id": "weed_control",
+          "day": 30,
+          "type": "weeding",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Keep weeds out",
+          "detail": "Weeds compete hardest up to day 60. Where needed, use a post-emergence herbicide approved for potato at the label dose.",
+          "optional": true
+        },
+        {
+          "id": "parasitoid_release_1",
+          "day": 40,
+          "type": "pest_control",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Release tuber moth parasitoid",
+          "detail": "Release Chelonus blackburnii, 12,000 per acre. Repeat on day 70.",
+          "optional": true
+        },
+        {
+          "id": "first_hoeing",
+          "day": 45,
+          "type": "weeding",
+          "methods": [
+            "tubers"
+          ],
+          "title": "First hoeing",
+          "detail": "Hoe without disturbing the stolons that carry the tubers."
+        },
+        {
+          "id": "blight_spray_1",
+          "day": 45,
+          "type": "disease_watch",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Blight protection spray",
+          "detail": "Spray mancozeb or chlorothalonil 2 g per litre against late and early blight. Repeat on day 60 and 75. Use products approved for potato and follow the label."
+        },
+        {
+          "id": "earthing_up",
+          "day": 60,
+          "type": "care",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Second hoeing and earthing up",
+          "detail": "Hoe again and earth up well, covering tubers so tuber moth cannot reach them."
+        },
+        {
+          "id": "blight_spray_2",
+          "day": 60,
+          "type": "disease_watch",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Second blight spray",
+          "detail": "Spray mancozeb or chlorothalonil 2 g per litre again."
+        },
+        {
+          "id": "parasitoid_release_2",
+          "day": 70,
+          "type": "pest_control",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Second parasitoid release",
+          "detail": "Release Chelonus blackburnii, 12,000 per acre, again.",
+          "optional": true
+        },
+        {
+          "id": "blight_spray_3",
+          "day": 75,
+          "type": "disease_watch",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Third blight spray",
+          "detail": "Spray mancozeb or chlorothalonil 2 g per litre a third time."
+        },
+        {
+          "id": "virus_roguing",
+          "day": 50,
+          "type": "pest_watch",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Remove virus-infected plants",
+          "detail": "Pull out plants with mottled or curled leaves regularly; aphids spread these viruses. Use products approved for potato and follow the label."
+        },
+        {
+          "id": "harvest",
+          "day": 120,
+          "type": "harvest",
+          "methods": [
+            "tubers"
+          ],
+          "title": "Harvest",
+          "detail": "The crop takes about 120 days. Harvest when the plants have matured.",
+          "basis": "age"
+        }
+      ]
+    }
+  }
+}
